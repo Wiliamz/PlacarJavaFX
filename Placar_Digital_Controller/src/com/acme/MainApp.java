@@ -19,9 +19,10 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/FXMLDocument.fxml"));
+        Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/LoginScreenController.fxml"));
         Scene cena = new Scene(fxmlCena);
         primaryStage.setScene(cena);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
