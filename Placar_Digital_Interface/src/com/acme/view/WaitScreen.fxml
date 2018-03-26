@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXProgressBar layoutX="585.0" layoutY="893.0" maxHeight="20.0" maxWidth="300.0" prefHeight="15.0" prefWidth="200.0" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="585.0" AnchorPane.rightAnchor="581.0" />
+      <Label layoutX="812.0" layoutY="908.0" maxHeight="28.0" maxWidth="321.0" prefHeight="28.0" prefWidth="300.0" text="Aguardando Controlador" textFill="WHITE" AnchorPane.bottomAnchor="144.0" AnchorPane.leftAnchor="812.0" AnchorPane.rightAnchor="808.0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DISAPPEAR" />
+   </cursor>
+</AnchorPane>
