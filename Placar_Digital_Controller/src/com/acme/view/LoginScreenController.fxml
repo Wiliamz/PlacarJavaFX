@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="1027.0" style="-fx-background-color: #313131; -fx-border-radius: 0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="1027.0" style="-fx-background-color: #313131; -fx-border-radius: 0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.LoginScreenController.fxml">
    <children>
       <Pane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #7FFF00;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -37,7 +37,7 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <CheckBox layoutX="50.0" layoutY="229.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="200.0" text="Remember me" textFill="#313131" />
+            <CheckBox layoutX="50.0" layoutY="229.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="200.0" style="" text="Remember me" textFill="#313131" />
             <Label alignment="CENTER" layoutX="50.0" layoutY="354.0" prefHeight="17.0" prefWidth="200.0" text="Forgot my password" textFill="#313131" underline="true" />
             <ImageView fitHeight="17.0" fitWidth="19.0" layoutX="26.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
                <image>
