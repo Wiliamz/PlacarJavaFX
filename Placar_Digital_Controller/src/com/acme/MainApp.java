@@ -23,7 +23,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/Juiz.fxml"));
+        Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/Administrador.fxml"));
         StackPane root = new StackPane();
         Rectangle2D r = Screen.getPrimary().getBounds();
         Scene cena = new Scene(fxmlCena, r.getWidth(), r.getHeight());
