@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Light.Distant?>
@@ -17,7 +18,11 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #7FFF00;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="btnSingIn" layoutX="50.0" layoutY="296.0" prefHeight="40.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #313131;" text="Sign In" textFill="CHARTREUSE">
+            <JFXTextField fx:id="tfIp" focusColor="#313131" layoutX="50.0" layoutY="79.0" prefHeight="25.0" prefWidth="200.0" promptText="IP" unFocusColor="#2e2e2e3f" />
+            <JFXTextField fx:id="tfUsername" focusColor="#313131" layoutX="50.0" layoutY="129.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" unFocusColor="#2e2e2e3f" />
+            <JFXPasswordField fx:id="pfPassword" focusColor="#313131" layoutX="50.0" layoutY="179.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" unFocusColor="#2e2e2e3f" />
+            <CheckBox fx:id="cbRememberme" layoutX="50.0" layoutY="229.0" mnemonicParsing="false" onAction="#cbRemembermeAction" prefHeight="17.0" prefWidth="200.0" text="Remember me" textFill="#313131" />
+            <JFXButton fx:id="btnSignIn" layoutX="50.0" layoutY="296.0" onAction="#btnSignInAction" prefHeight="40.0" prefWidth="200.0" ripplerFill="BLACK" style="-fx-background-color: #313131;" text="Sign In" textFill="CHARTREUSE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -29,9 +34,6 @@
                   </Lighting>
                </effect>
             </JFXButton>
-            <JFXTextField focusColor="#313131" layoutX="50.0" layoutY="129.0" prefHeight="25.0" prefWidth="200.0" promptText="Username" unFocusColor="#2e2e2e3f" />
-            <JFXPasswordField focusColor="#313131" layoutX="50.0" layoutY="179.0" prefHeight="25.0" prefWidth="200.0" promptText="Password" unFocusColor="#2e2e2e3f" />
-            <JFXTextField focusColor="#313131" layoutX="50.0" layoutY="79.0" prefHeight="25.0" prefWidth="200.0" promptText="IP" unFocusColor="#2e2e2e3f" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0" text="Login" textAlignment="CENTER" textFill="#313131">
                <font>
                   <Font name="System Bold" size="26.0" />
@@ -56,15 +58,15 @@
             </ImageView>
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="313.0" layoutY="163.0" prefHeight="74.0" prefWidth="700.0" text="DIGITAL BOARD" textFill="CHARTREUSE">
+      <Label alignment="CENTER" layoutX="313.0" layoutY="163.0" prefHeight="74.0" prefWidth="700.0" style="-fx-font-family: Digital-7; -fx-font-size: 72px;" stylesheets="@LoginScreenController.css" text="DIGITAL BOARD" textFill="CHARTREUSE">
          <font>
             <Font name="Digital-7" size="72.0" />
          </font>
       </Label>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="988.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/icons/x.png" />
-         </image>
-      </ImageView>
+      <JFXButton fx:id="bExit" layoutX="979.0" layoutY="20.0" onAction="#bExitAction" prefHeight="24.0" prefWidth="24.0" stylesheets="@LoginScreenController.css" text=" " textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
