@@ -23,10 +23,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/PlacarBasquete.fxml"));
+        Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/JuizBasquete.fxml"));
         StackPane root = new StackPane();
         Rectangle2D r = Screen.getPrimary().getBounds();
         Scene cena = new Scene(fxmlCena, r.getWidth(), r.getHeight());
+        
+        cena.getStylesheets().add(getClass().getResource("/com/acme/resources/css/style.css").toExternalForm());
 
         System.out.println("x: "+r.getWidth()+" y: "+r.getHeight());
 

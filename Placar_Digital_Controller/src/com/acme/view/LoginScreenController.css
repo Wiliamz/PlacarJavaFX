@@ -9,10 +9,23 @@ and open the template in the editor.
 */
 @font-face{
     src: url("../resources/fonts/digital-7.ttf");
+    src: url("../resources/fonts/Nexa-Bold.otf");
+    src: url("../resources/fonts/Nexa-Book.otf");
 }
-.text{
-    -fx-font-family: "Digital-7";
+
+.text-default{
+    -fx-font-family: "Open Sans";
 }
-.button{
-    -fx-background-image: url("../resources/icons/x.png");
+
+.text-digital {
+	-fx-font-family: "Digital-7";
+	-fx-color: #FFFFFF;
+}
+
+.nexa-bold {
+	-fx-font-family: "Nexa Bold";
+}
+
+.bg-rosa {
+	-fx-background-color: #ef486c;
 }
