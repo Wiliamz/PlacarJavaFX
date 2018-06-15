@@ -1,6 +1,9 @@
 package com.acme.model;
 
+import com.acme.commons.TipoUsuario;
+import com.acme.commons.Utils;
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Classe User : Classe sem interface gráfica que representa um objeto Usuário,
@@ -16,6 +19,7 @@ public class User extends Role implements Serializable {
      */
     private String login;
     private String password;
+    private TipoUsuario tipo;
 
     /**
      * Construtor da classe.
@@ -74,6 +78,11 @@ public class User extends Role implements Serializable {
      * @return boolean Neste caso sempre retornara TRUE
      */
     public boolean validate() {
+        try {
+            Utils.gerarMd5(this.login);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
 //        if (this.login.equalsIgnoreCase("Adm") && this.password.equalsIgnoreCase("123")) {
         return this.login.contentEquals(login) && this.password.contentEquals(password);
 //        if (library.getUsers().equals(this.login) && library.getUsers().equals(this.password)) {
@@ -83,4 +92,5 @@ public class User extends Role implements Serializable {
 
 //        FALTA TERMINAR
     }
+
 }
