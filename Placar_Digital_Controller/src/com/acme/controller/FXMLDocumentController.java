@@ -15,6 +15,7 @@ public class FXMLDocumentController {
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
+        System.out.println("uiuiuiui");
     }
 
 }
