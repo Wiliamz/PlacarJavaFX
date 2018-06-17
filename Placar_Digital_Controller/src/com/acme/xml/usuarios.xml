@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<usuarios>
+    <users login="admin" password="bf462004fc0ac576931706c213bd2b03" tipo="ADMIN"/>
+    <users login="marketing" password="aa42b234cb05915716c1434058fe1aee" tipo="MARKETING"/>
+    <users login="juiz" password="a426a938044a67b749be5fe1f0cea9e9" tipo="JUIZ"/>
+</usuarios>

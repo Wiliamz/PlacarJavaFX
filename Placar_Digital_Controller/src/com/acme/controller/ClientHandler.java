@@ -18,6 +18,9 @@ public class ClientHandler extends Thread {
     ObjectOutputStream dos;
     final Socket socket;
 
+    String login;
+    String senha;
+
     public ClientHandler(Socket socket) throws IOException {
         this.socket = socket;
         this.dis = new ObjectInputStream(socket.getInputStream());
@@ -27,7 +30,7 @@ public class ClientHandler extends Thread {
     public void sendMessage(MessageObject msg) {
         try {
             if (socket.isClosed()) {
-                Server.clients.remove(this);
+                Server.getClients().remove(this);
                 return;
             }
             dos.writeObject(msg);
@@ -38,36 +41,41 @@ public class ClientHandler extends Thread {
 
     @Override
     public void run() {
-        Server.avisaTodos();
-        while (true) {
-            try {
-                Object obj = dis.readObject();
-                if (obj instanceof MessageObject) {
-                    MessageObject msg = (MessageObject) obj;
-                    System.out.println("RECEBIDO: " + msg.message);
-                    if (msg.message.equals("Exit")) {
-                        System.out.println("Client " + this.socket + " mandou exit...");
-                        System.out.println("Fechando a connection.");
-                        this.socket.close();
-                        System.out.println("Connection fechada");
-                        break;
+//        Server.avisaTodos();
+//        if (Server.fazerLogin(this.login, this.senha)) {
+            while (true) {
+                try {
+                    Object obj = dis.readObject();
+                    if (obj instanceof MessageObject) {
+                        MessageObject msg = (MessageObject) obj;
+                        System.out.println("RECEBIDO: " + msg.message);
+                        if (msg.message.equals("Exit")) {
+                            System.out.println("Client " + this.socket + " mandou exit...");
+                            System.out.println("Fechando a connection.");
+                            this.socket.close();
+                            System.out.println("Connection fechada");
+                            break;
+                        }
+                    } else {
+                        System.out.println(obj.toString());
                     }
-                } else {
-                    System.out.println(obj.toString());
+                } catch (SocketException se) {
+                } catch (ClassNotFoundException | IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (SocketException se) {
-            } catch (ClassNotFoundException | IOException e) {
+            }
+
+            try {
+                Server.getClients().remove(this);
+                this.dis.close();
+                this.dos.close();
+
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
 
-        try {
-            Server.clients.remove(this);
-            this.dis.close();
-            this.dos.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } else {
+//            Server.getClients().remove(this);
+//        }
     }
 }

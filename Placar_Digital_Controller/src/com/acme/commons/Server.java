@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import com.acme.controller.ClientHandler;
 import com.acme.model.MessageObject;
+import com.acme.model.Usuario;
+import com.acme.model.UsuarioWrapper;
+import java.io.File;
+import javax.swing.JOptionPane;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -16,7 +23,12 @@ import com.acme.model.MessageObject;
  */
 public class Server {
 
-    public static final List<ClientHandler> clients = new ArrayList<>();
+    private static final List<ClientHandler> clients = new ArrayList<>();
+
+    public static List<ClientHandler> getClients() {
+        return clients;
+    }
+   
 
     public static void rodar() throws IOException {
         // server is listening on port 5056
@@ -48,10 +60,11 @@ public class Server {
             }
         }
     }
-
+    
     public static void avisaTodos() {
-        for (ClientHandler c : clients) {
-            c.sendMessage(new MessageObject("Miranha"));
+        for (ClientHandler c : getClients()) {
+            c.sendMessage(new MessageObject("Shazam Carai ta mandando pra geral seu dilho da trueta"));
         }
     }
+    
 }

@@ -4,15 +4,18 @@ import com.acme.commons.TipoUsuario;
 import com.acme.commons.Utils;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Classe User : Classe sem interface gráfica que representa um objeto Usuário,
- * é filha da classe Person e implementa a classe Serializable.
+ * Classe Usuario : Classe sem interface gráfica que representa um objeto Usuário,
+ é filha da classe Person e implementa a classe Serializable.
  *
  * @author Mateus Podgorski
  * @author Wiliam Felber
  */
-public class User extends Role implements Serializable {
+@XmlRootElement
+public class Usuario extends Role implements Serializable {
 
     /**
      * Declaração de atributos da classe.
@@ -21,15 +24,24 @@ public class User extends Role implements Serializable {
     private String password;
     private TipoUsuario tipo;
 
+    
+    public Usuario(){}
+    
     /**
      * Construtor da classe.
      *
      * @param login
      * @param password
      */
-    public User(String login, String password) {
+    public Usuario(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+    
+    public Usuario(String login, String password, TipoUsuario tipo) {
+        this.login = login;
+        this.password = password;
+        this.tipo = tipo;
     }
 
     /**
@@ -46,6 +58,7 @@ public class User extends Role implements Serializable {
      *
      * @param login String
      */
+    @XmlAttribute
     public void setLogin(String login) {
         this.login = login;
     }
@@ -64,8 +77,18 @@ public class User extends Role implements Serializable {
      *
      * @param password String
      */
+    @XmlAttribute
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    @XmlAttribute
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
     }
 
     /**
