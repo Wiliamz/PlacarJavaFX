@@ -11,9 +11,12 @@ import com.acme.commons.Utils;
 import com.acme.model.Usuario;
 import com.acme.model.UsuarioWrapper;
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
@@ -33,10 +36,36 @@ import javax.xml.bind.Marshaller;
  */
 public class MainApp extends Application {
 
-    public static Stage stage  = null;
+    public static Stage stage = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+//
+//        Platform.runLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    //                try {
+//                    Server.rodar();
+//                } catch (IOException ex) {
+//                    Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        });
+//        
+         Task task = new Task<Void>() {
+            @Override
+            public Void call() {
+                try {
+                    Server.rodar();
+                } catch (IOException ex) {
+                    Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return null;
+            }
+        };
+        new Thread(task).start();
+
         Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/LoginController.fxml"));
         Scene cena = new Scene(fxmlCena);
         primaryStage.setScene(cena);
