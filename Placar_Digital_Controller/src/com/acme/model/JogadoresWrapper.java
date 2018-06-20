@@ -7,43 +7,26 @@ package com.acme.model;
 
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Gabriel Cardoso
  */
-public class TimeJogo {
+@XmlRootElement(name = "jogadores")
+public class JogadoresWrapper {
 
-    private String nome;
-    private int qtdVenceu;
-    private int qtdPerdeu;
     private ArrayList<Jogador> jogadores = new ArrayList<>();
 
-    public String getNome() {
-        return nome;
+    public JogadoresWrapper() {
     }
 
-    @XmlElement
-    public void setNome(String nome) {
-        this.nome = nome;
+    public JogadoresWrapper(Jogador item) {
+        this.jogadores.add(item);
     }
 
-    public int getQtdVenceu() {
-        return qtdVenceu;
-    }
-
-    @XmlElement
-    public void setQtdVenceu(int qtdVenceu) {
-        this.qtdVenceu = qtdVenceu;
-    }
-
-    public int getQtdPerdeu() {
-        return qtdPerdeu;
-    }
-
-    @XmlElement
-    public void setQtdPerdeu(int qtdPerdeu) {
-        this.qtdPerdeu = qtdPerdeu;
+    public void addJogador(Jogador item) {
+        this.jogadores.add(item);
     }
 
     public ArrayList<Jogador> getJogadores() {

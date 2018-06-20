@@ -5,6 +5,7 @@
  */
 package com.acme.model;
 
+import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -12,28 +13,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Gabriel Cardoso
  */
-@XmlRootElement
-public class Jogador {
+@XmlRootElement(name = "times")
+public class TimeJogoWrapper {
 
-    private String nome;
-    private TimeJogo time;
+    private ArrayList<TimeJogo> times = new ArrayList<>();
 
-    public String getNome() {
-        return nome;
+    public TimeJogoWrapper() {
+    }
+
+    public TimeJogoWrapper(TimeJogo item) {
+        this.times.add(item);
+
+    }
+
+    public ArrayList<TimeJogo> getTimes() {
+        return times;
     }
 
     @XmlElement
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public TimeJogo getTime() {
-        return time;
-    }
-
-    @XmlElement
-    public void setTime(TimeJogo time) {
-        this.time = time;
+    public void setTimes(ArrayList<TimeJogo> times) {
+        this.times = times;
     }
 
 }

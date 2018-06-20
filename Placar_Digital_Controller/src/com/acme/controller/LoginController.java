@@ -7,6 +7,8 @@ package com.acme.controller;
 
 import com.acme.MainApp;
 import com.acme.commons.Client;
+import com.acme.commons.Server;
+import com.acme.commons.TipoUsuario;
 import com.acme.commons.Utils;
 import com.acme.model.Usuario;
 import com.jfoenix.controls.JFXButton;
@@ -23,9 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 
 /**
@@ -77,44 +77,84 @@ public class LoginController {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+
+//                Platform.runLater(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Client.rodar(txtIp.getText());
+//                        } catch (ClassNotFoundException ex) {
+//                            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//                        } catch (UnknownHostException ex) {
+//                            System.out.println("meu zeus deu merda");
+//                            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//                        } catch (IOException ex) {
+//                            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//                    }
+//                });
+                Task task = new Task<Void>() {
+                    @Override
+                    public Void call() {
+                        try {
+                            Client.rodar(txtIp.getText());
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (UnknownHostException ex) {
+                            System.out.println("meu zeus deu merda");
+                            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        return null;
+                    }
+                };
+                new Thread(task).start();
 //                try {
 //                    Client.rodar(txtIp.getText());
 //System.out.println("LOGIN"+login.getText());
-                try {
-                    Usuario u = Utils.fazerLogin(login.getText(), Utils.gerarMd5(senha.getText()));
-                    if (u != null) {
+                if (!login.getText().isEmpty() && !senha.getText().isEmpty()) {
+                    try {
+                        Usuario u = Utils.fazerLogin(login.getText(), Utils.gerarMd5(senha.getText()));
+                        if (u != null) {
 
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    Client.rodar(txtIp.getText());
-                                } catch (ClassNotFoundException ex) {
-                                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                                } catch (UnknownHostException ex) {
-                                    System.out.println("meu zeus deu merda");
-                                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                                } catch (IOException ex) {
-                                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                                ;
+                            FXMLLoader fxmlLoader = null;
+                            if (u.getTipo().equals(TipoUsuario.ADMIN)) {
+                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/ADMStart.fxml"));
+                            } else if (u.getTipo().equals(TipoUsuario.MARKETING)) {
+                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Marketing.fxml"));
+                            } else if (u.getTipo().equals(TipoUsuario.JUIZ)) {
+                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Juiz.fxml"));
                             }
-                        });
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Placar.fxml"));
-                        Parent root1 = (Parent) fxmlLoader.load();
-                        Stage stage = new Stage();
-                        stage.setTitle("ABC");
-                        stage.setScene(new Scene(root1));
-                        stage.show();
-                        MainApp.stage.close();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Errou feio, errou rude!");
-                    }
+                            Parent root1 = (Parent) fxmlLoader.load();
+                            Stage stage = new Stage();
+                            stage.setTitle("Placar Eletronico");
+                            stage.setScene(new Scene(root1));
+                            stage.show();
+                            MainApp.stage.close();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Errou feio, errou rude!");
+                        }
 
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (NoSuchAlgorithmException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (NoSuchAlgorithmException ex) {
+                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Placar.fxml"));
+
+                    Parent root1 = null;
+                    try {
+                        root1 = (Parent) fxmlLoader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Stage stage = new Stage();
+                    stage.setTitle("Placar Eletronico");
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                    MainApp.stage.close();
                 }
             }
         });

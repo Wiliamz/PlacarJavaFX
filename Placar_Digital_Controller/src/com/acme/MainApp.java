@@ -6,29 +6,15 @@
 package com.acme;
 
 import com.acme.commons.Server;
-import com.acme.commons.TipoUsuario;
-import com.acme.commons.Utils;
-import com.acme.model.Usuario;
-import com.acme.model.UsuarioWrapper;
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 
 /**
  *
@@ -72,6 +58,8 @@ public class MainApp extends Application {
         primaryStage.show();
         stage = primaryStage;
 
+        
+//                                          EXEMPLO SALVAR XML
 //        try {
 //            Usuario u = new Usuario("admin", Utils.gerarMd5("essanaoeasenha"), TipoUsuario.ADMIN);
 //            Usuario u2 = new Usuario("marketing", Utils.gerarMd5("shazam"), TipoUsuario.MARKETING);
@@ -92,6 +80,9 @@ public class MainApp extends Application {
 ////                Logger.getLogger(MesaController.class.getName()).log(Level.SEVERE, null, ex);
 //            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o arquivo :(");
 //        }
+
+
+
 //        Server.rodar();
 //        StackPane root = new StackPane();
 //        Rectangle2D r = Screen.getPrimary().getBounds();
