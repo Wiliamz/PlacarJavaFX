@@ -124,7 +124,7 @@ public class LoginController {
                             } else if (u.getTipo().equals(TipoUsuario.MARKETING)) {
                                 fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Marketing.fxml"));
                             } else if (u.getTipo().equals(TipoUsuario.JUIZ)) {
-                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Juiz.fxml"));
+                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/JuizFutebol.fxml"));
                             }
                             Parent root1 = (Parent) fxmlLoader.load();
                             Stage stage = new Stage();
