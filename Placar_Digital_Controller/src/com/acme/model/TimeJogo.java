@@ -54,5 +54,9 @@ public class TimeJogo {
     public void setJogadores(ArrayList<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
-
+    //To do
+    public void addJogador(Jogador j){
+        this.jogadores.add(j);
+    }
+    
 }

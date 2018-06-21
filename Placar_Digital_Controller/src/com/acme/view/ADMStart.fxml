@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.ADMStartController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" styleClass="bg-adm">
          <children>
@@ -34,10 +34,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="116.0" prefWidth="376.0" styleClass="default-button" text="Editar Times" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <JFXTextField alignment="CENTER" promptText="00:00" styleClass="default-text-field" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <JFXComboBox prefHeight="25.0" prefWidth="367.0" styleClass="adm-combo" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <JFXComboBox prefHeight="25.0" prefWidth="572.0" styleClass="adm-combo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="JfxBEditTimes" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#handleEditTimeAction" prefHeight="116.0" prefWidth="376.0" styleClass="default-button" text="Editar Times" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <JFXTextField fx:id="JfxTfTempo" alignment="CENTER" promptText="00:00" styleClass="default-text-field" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <JFXComboBox fx:id="JfxCbTimeA" prefHeight="25.0" prefWidth="367.0" styleClass="adm-combo" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXComboBox fx:id="JfxCbTimeA" prefHeight="25.0" prefWidth="572.0" styleClass="adm-combo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label styleClass="adm-label" text="Casa" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                   <Label styleClass="adm-label" text="Visitante" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                   <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -56,7 +56,7 @@
                         <ImageView fitHeight="29.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="adm-logo" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="116.0" prefWidth="376.0" styleClass="default-button" text="Escalar Times" GridPane.rowIndex="2" />
+                  <JFXButton fx:id="JfxBEscalarTimes" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#handleEscalarTimeAction" prefHeight="116.0" prefWidth="376.0" styleClass="default-button" text="Escalar Times" GridPane.rowIndex="2" />
                   <Label text="X" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label alignment="CENTER" styleClass="default-label" text="Tempo Estimado para a Partida" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                </children>
@@ -64,7 +64,7 @@
                   <Insets left="40.0" right="40.0" />
                </VBox.margin>
             </GridPane>
-            <JFXButton prefHeight="90.0" prefWidth="600.0" styleClass="btn-destaque" text="Iniciar Partida" />
+            <JFXButton fx:id="JfxBStartGame" prefHeight="90.0" prefWidth="600.0" styleClass="btn-destaque" text="Iniciar Partida" />
          </children>
       </VBox>
    </children>

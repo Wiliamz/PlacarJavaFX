@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jogadores>
-    <jogador login="admin" password="bf462004fc0ac576931706c213bd2b03" tipo="ADMIN"/>
+    <jogador nome="Neymar" time="Brasil"/>
 </jogadores>
