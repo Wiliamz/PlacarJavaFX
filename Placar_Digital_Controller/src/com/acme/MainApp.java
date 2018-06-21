@@ -6,6 +6,7 @@
 package com.acme;
 
 import com.acme.commons.Server;
+import com.acme.commons.Utils;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,19 +40,24 @@ public class MainApp extends Application {
 //                }
 //            }
 //        });
+
+        System.out.println(Utils.gerarMd5("123"));
 //        
-         Task task = new Task<Void>() {
-            @Override
-            public Void call() {
-                try {
-                    Server.rodar();
-                } catch (IOException ex) {
-                    Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+        int comServer = JOptionPane.showConfirmDialog(null, "Abrir server junto?");
+        if (comServer == 0) {
+            Task task = new Task<Void>() {
+                @Override
+                public Void call() {
+                    try {
+                        Server.rodar();
+                    } catch (IOException ex) {
+                        Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    return null;
                 }
-                return null;
-            }
-        };
-        new Thread(task).start();
+            };
+            new Thread(task).start();
+        }
 
         Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/LoginController.fxml"));
         Scene cena = new Scene(fxmlCena);
@@ -58,7 +65,6 @@ public class MainApp extends Application {
         primaryStage.show();
         stage = primaryStage;
 
-        
 //                                          EXEMPLO SALVAR XML
 //        try {
 //            Usuario u = new Usuario("admin", Utils.gerarMd5("essanaoeasenha"), TipoUsuario.ADMIN);
@@ -80,9 +86,6 @@ public class MainApp extends Application {
 ////                Logger.getLogger(MesaController.class.getName()).log(Level.SEVERE, null, ex);
 //            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar o arquivo :(");
 //        }
-
-
-
 //        Server.rodar();
 //        StackPane root = new StackPane();
 //        Rectangle2D r = Screen.getPrimary().getBounds();
