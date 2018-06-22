@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.JuizFutebolController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.JuizFutebolController">
   <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="250.0" />
@@ -352,7 +352,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
          <children>
-            <Label prefHeight="36.0" prefWidth="491.0" styleClass="text-default" text="Pausar Partida" textAlignment="CENTER" textFill="#ff0099">
+            <Label prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="Pausar Partida" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Agency FB" size="18.0" />
                </font>
@@ -360,7 +360,7 @@
                   <Insets top="36.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="36.0" prefWidth="491.0" styleClass="text-default" text="Adicionar Prorrogação" textAlignment="CENTER" textFill="#ff0099">
+            <Label prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="Adicionar Prorrogação" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Agency FB" size="18.0" />
                </font>
@@ -372,7 +372,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
          <children>
-            <JFXButton fx:id="btnPausarPartida" ellipsisString="" maxHeight="36.0" maxWidth="168.0" minHeight="36.0" minWidth="36.0" onAction="#handlerPauseGame" prefHeight="36.0" prefWidth="168.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #ff0099;" styleClass="btn-btnPausarPartida" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="btnPausarPartida" ellipsisString="" maxHeight="36.0" maxWidth="168.0" minHeight="36.0" minWidth="36.0" onAction="#handlerPauseGame" prefHeight="36.0" prefWidth="168.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #ff0099;" styleClass="btnPausarPartida" text=" " textAlignment="CENTER">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -402,7 +402,7 @@
             </HBox>
          </children>
       </VBox>
-      <JFXButton fx:id="btnEndGame" ellipsisString="" maxHeight="100.0" maxWidth="168.0" minHeight="36.0" minWidth="36.0" onAction="#handlerEndGame" prefHeight="100.0" prefWidth="168.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btn-btnEndGame" text=" " textAlignment="CENTER" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+      <JFXButton fx:id="btnEndGame" ellipsisString="" maxHeight="100.0" maxWidth="168.0" minHeight="36.0" minWidth="36.0" onAction="#handlerEndGame" prefHeight="100.0" prefWidth="168.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btnEndGame" text=" " textAlignment="CENTER" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
          <font>
             <Font name="Digital-7" size="20.0" />
          </font>
@@ -414,7 +414,7 @@
       </Label>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ff0099;" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <JFXButton fx:id="btnAddGolA" alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" onAction="#handlerAddGolA" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="+" textFill="#ff0099">
+            <JFXButton fx:id="btnAddGolA" alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" onAction="#handlerAddGolA" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="text-digital" text="+" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -422,7 +422,7 @@
                   <Insets left="5.0" right="5.0" top="46.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnRemoveGolA" alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveGolA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" text="-" textFill="#ff0099">
+            <JFXButton fx:id="btnRemoveGolA" alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveGolA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" styleClass="text-digital" text="-" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -430,7 +430,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnAddFaltaA" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerAddFaltaA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btn-btnAddFalta" stylesheets="@../resources/css/style.css" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="btnAddFaltaA" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerAddFaltaA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btnAddFalta" stylesheets="@../resources/css/style.css" text=" " textAlignment="CENTER">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -438,7 +438,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnRemoveFaltaA" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveFaltaA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btn-btnRemoveFalta" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="btnRemoveFaltaA" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveFaltaA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btnRemoveFalta" text=" " textAlignment="CENTER">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -446,7 +446,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnKickPlayerA" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerKickA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btn-btnKickPlayer" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="btnKickPlayerA" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerKickA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btnKickPlayer" text=" " textAlignment="CENTER">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -466,7 +466,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ff0099;" GridPane.columnIndex="9" GridPane.rowIndex="2">
          <children>
-            <JFXButton fx:id="btnAddGolB" alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" onAction="#handlerAddGolB" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="+" textFill="#ff0099">
+            <JFXButton fx:id="btnAddGolB" alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" onAction="#handlerAddGolB" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="text-digital" text="+" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -474,7 +474,7 @@
                   <Insets left="5.0" right="5.0" top="46.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnRemoveGolB" alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveGolB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" text="-" textFill="#ff0099">
+            <JFXButton fx:id="btnRemoveGolB" alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveGolB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" styleClass="text-digital" text="-" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -482,7 +482,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnAddFaltaB" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerAddFaltaB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btn-btnAddFalta" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="btnAddFaltaB" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerAddFaltaB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btnAddFalta" text=" " textAlignment="CENTER">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -490,7 +490,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnRemoveFaltaB" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveFaltaB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btn-btnRemoveFalta" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="btnRemoveFaltaB" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerRemoveFaltaB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btnRemoveFalta" text=" " textAlignment="CENTER">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -498,7 +498,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="btnKickPlayerB" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerKickB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btn-btnKickPlayer" text=" " textAlignment="CENTER">
+            <JFXButton fx:id="btnKickPlayerB" alignment="CENTER" contentDisplay="RIGHT" ellipsisString="" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" onAction="#handlerKickB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-color: #FFFFFF;" styleClass="btnKickPlayer" text=" " textAlignment="CENTER">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>

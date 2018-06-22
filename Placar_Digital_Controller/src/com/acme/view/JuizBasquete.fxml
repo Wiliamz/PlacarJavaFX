@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" styleClass="text-default" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" styleClass="text-default" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="250.0" />
@@ -34,7 +34,7 @@
       <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label prefHeight="36.0" prefWidth="491.0" text="Painel Eletronico - Juiz" textFill="#ff0099" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="Painel Eletronico - Juiz" textFill="#ff0099" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="Digital-7" size="26.0" />
          </font>
@@ -46,7 +46,7 @@
       </JFXButton>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
          <children>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="TIME A" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="TIME A" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -54,12 +54,12 @@
                   <Insets top="72.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" text="0" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" styleClass="text-digital" text="0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="Tempo decorrido" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="Tempo decorrido" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -67,12 +67,12 @@
                   <Insets top="36.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" text="00:00" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" styleClass="text-digital" text="00:00" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="Tempo da Bola" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="Tempo da Bola" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -80,7 +80,7 @@
                   <Insets top="36.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" text=":00" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" styleClass="text-digital" text=":00" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -89,7 +89,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
          <children>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="TIME b" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="TIME b" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -97,12 +97,12 @@
                   <Insets top="72.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" text="0" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" styleClass="text-digital" text="0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="prorrogacao" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="prorrogacao" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="20.0" />
                </font>
@@ -110,7 +110,7 @@
                   <Insets top="36.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" text="00:00" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" style="-fx-background-color: #FF0099;" styleClass="text-digital" text="00:00" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -119,12 +119,12 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
          <children>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="placar" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="placar" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="VS" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="VS" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -132,7 +132,7 @@
                   <Insets top="36.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="x" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="x" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -140,7 +140,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="+" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="+" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -152,7 +152,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ff0099;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Label prefHeight="36.0" prefWidth="491.0" text="TIME A" textAlignment="CENTER" textFill="WHITE">
+            <Label prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="TIME A" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -284,7 +284,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
          <children>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="Geral" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="Geral" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -344,7 +344,7 @@
                         <Font name="Agency FB" size="18.0" />
                      </font>
                   </JFXTextField>
-                  <JFXButton contentDisplay="RIGHT" prefHeight="36.0" prefWidth="4.0" style="-fx-background-color: #ff0099;" text="+" textFill="WHITE">
+                  <JFXButton contentDisplay="RIGHT" prefHeight="36.0" prefWidth="4.0" style="-fx-background-color: #ff0099;" styleClass="btnZerarCrono" text="+" textFill="WHITE">
                      <font>
                         <Font name="Digital-7" size="24.0" />
                      </font>
@@ -364,14 +364,14 @@
             <Font name="Digital-7" size="20.0" />
          </font>
       </JFXButton>
-      <Label alignment="CENTER" prefHeight="60.0" prefWidth="266.0" text="Fim de Jogo" textFill="#ff0099" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+      <Label alignment="CENTER" prefHeight="60.0" prefWidth="266.0" styleClass="text-digital" text="Fim de Jogo" textFill="#ff0099" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
          <font>
             <Font name="Digital-7" size="29.0" />
          </font>
       </Label>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ff0099;" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" text="+1" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="+1" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="18.0" />
                </font>
@@ -379,7 +379,7 @@
                   <Insets left="5.0" right="5.0" top="56.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="+2" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="+2" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="18.0" />
                </font>
@@ -387,7 +387,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="+3" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="+3" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="18.0" />
                </font>
@@ -395,7 +395,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="-" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="-" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -427,7 +427,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <Label alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" text="11" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" styleClass="text-digital" text="11" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -442,14 +442,14 @@
             <Font name="Digital-7" size="67.0" />
          </font>
       </JFXButton>
-      <Label alignment="CENTER" prefHeight="60.0" prefWidth="267.0" text="Zerar Cronometro (Z)" textFill="#ff0099" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+      <Label alignment="CENTER" prefHeight="60.0" prefWidth="267.0" styleClass="text-digital" text="Zerar Cronometro (Z)" textFill="#ff0099" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
          <font>
             <Font name="Digital-7" size="29.0" />
          </font>
       </Label>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ff0099;" GridPane.columnIndex="9" GridPane.rowIndex="2">
          <children>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" text="+1" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="+1" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="18.0" />
                </font>
@@ -457,7 +457,7 @@
                   <Insets left="5.0" right="5.0" top="56.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="+2" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="+2" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="18.0" />
                </font>
@@ -465,7 +465,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="+3" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="+3" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="18.0" />
                </font>
@@ -473,7 +473,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" text="-" textFill="#ff0099">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" minWidth="45.0" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" styleClass="btnZerarCrono" text="-" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -505,7 +505,7 @@
                   <Insets left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
-            <Label alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" text="11" textAlignment="CENTER" textFill="#ff0099">
+            <Label alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="45.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff;" styleClass="text-digital" text="11" textAlignment="CENTER" textFill="#ff0099">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -517,7 +517,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ff0099;" GridPane.columnIndex="8" GridPane.rowIndex="2">
          <children>
-            <Label prefHeight="36.0" prefWidth="491.0" text="TIME B" textAlignment="CENTER" textFill="WHITE">
+            <Label prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="TIME B" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>

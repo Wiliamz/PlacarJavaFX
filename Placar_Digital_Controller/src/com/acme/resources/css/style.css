@@ -1,7 +1,7 @@
 @font-face{
     font-family: Digital-7;
     src: url("../fonts/digital-7.ttf");
-    
+
 }
 
 @font-face{
@@ -33,18 +33,19 @@
 
 }
 .btnDespauseGame{
-    
+
     -fx-background-image: url("../icons/play.png");
-    
+
 }
 .btnZerarCrono{
-    
+
     -fx-background-image: url("../icons/hand.png");
-    
+    -fx-font-family: "Digital-7";
+    -fx-color:#FFFFFF ;
 }
 
 .text-default {
-    
+
     -fx-font-family: "Nexa Bold";
     -fx-color: #FFFFFF ;
 
