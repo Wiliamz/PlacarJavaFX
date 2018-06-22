@@ -129,6 +129,7 @@ public class LoginController {
                             Parent root1 = (Parent) fxmlLoader.load();
                             Stage stage = new Stage();
                             stage.setTitle("Placar Eletronico");
+                            
                             stage.setScene(new Scene(root1));
                             stage.show();
                             MainApp.stage.close();

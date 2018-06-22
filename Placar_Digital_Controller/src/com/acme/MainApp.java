@@ -15,6 +15,7 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -64,6 +65,10 @@ public class MainApp extends Application {
         primaryStage.setScene(cena);
         primaryStage.show();
         stage = primaryStage;
+        //Método para adicionar icones na barra de tarefas
+        Image icone = new Image("/com/acme/resources/icons/whistle128.png"); //Icone aleatório
+        stage.getIcons().add(icone);
+        
 
 //                                          EXEMPLO SALVAR XML
 //        try {

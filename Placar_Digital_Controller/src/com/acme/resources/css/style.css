@@ -1,11 +1,55 @@
-.btn-default {
-
+@font-face{
+    font-family: Digital-7;
+    src: url("../fonts/digital-7.ttf");
+    
 }
 
-.label-default {
-
+@font-face{
+    font-family: Nexa Bold; 
+    src: url("../fonts/Nexa-Bold.otf");
 }
 
-.label-placar {
+.btnAddFalta{
 
+    -fx-background-image: url("../icons/addycard.png") ;
+
+}
+.btnKickPlayer{
+
+    -fx-background-image: url("../icons/addrcard.png") ;
+
+}
+.btnRemoveFalta{
+    -fx-background-image: url("../icons/removeycard.png");
+}
+.btnEndGame{
+
+    -fx-background-image: url("../icons/whistle128.png") ;
+
+}
+.btnPausarPartida{
+
+    -fx-background-image: url("../icons/pause.png");
+
+}
+.btnDespauseGame{
+    
+    -fx-background-image: url("../icons/play.png");
+    
+}
+.btnZerarCrono{
+    
+    -fx-background-image: url("../icons/hand.png");
+    
+}
+
+.text-default {
+    
+    -fx-font-family: "Nexa Bold";
+    -fx-color: #FFFFFF ;
+
+}
+.text-digital{
+    -fx-font-family: "Digital-7";
+    -fx-color:#FFFFFF ;
 }
