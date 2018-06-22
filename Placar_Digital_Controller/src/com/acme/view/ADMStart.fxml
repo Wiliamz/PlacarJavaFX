@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.ADMStartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.ADMStartController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" styleClass="bg-adm">
          <children>
@@ -36,8 +36,8 @@
                <children>
                   <JFXButton fx:id="JfxBEditTimes" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#handleEditTimeAction" prefHeight="116.0" prefWidth="376.0" styleClass="default-button" text="Editar Times" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <JFXTextField fx:id="JfxTfTempo" alignment="CENTER" promptText="00:00" styleClass="default-text-field" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <JFXComboBox fx:id="JfxCbTimeA" prefHeight="25.0" prefWidth="367.0" styleClass="adm-combo" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <JFXComboBox fx:id="JfxCbTimeA" prefHeight="25.0" prefWidth="572.0" styleClass="adm-combo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXComboBox fx:id="JfxCbTimeA" editable="true" prefHeight="25.0" prefWidth="367.0" styleClass="adm-combo" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXComboBox fx:id="JfxCbTimeA" editable="true" prefHeight="25.0" prefWidth="572.0" styleClass="adm-combo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label styleClass="adm-label" text="Casa" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                   <Label styleClass="adm-label" text="Visitante" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                   <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">

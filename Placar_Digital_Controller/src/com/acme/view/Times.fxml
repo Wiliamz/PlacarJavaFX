@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.TimesHandler">
    <children>
       <GridPane prefHeight="600.0" prefWidth="600.0">
         <columnConstraints>
@@ -58,7 +58,7 @@
                   </HBox>
                   <HBox prefHeight="53.0" prefWidth="300.0">
                      <children>
-                        <JFXComboBox prefHeight="40.0" prefWidth="200.0" promptText="Selecionar Jogador" />
+                        <JFXComboBox fx:id="jfxCbSelectJogadores" prefHeight="40.0" prefWidth="200.0" promptText="Selecionar Jogador" />
                         <JFXButton buttonType="RAISED" prefHeight="45.0" prefWidth="70.0" text="+">
                            <styleClass>
                               <String fx:value="default-button" />
@@ -86,7 +86,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
                         <JFXComboBox prefHeight="40.0" prefWidth="200.0" promptText="Selecionar Time" />
-                        <JFXButton buttonType="RAISED" prefHeight="45.0" prefWidth="70.0" text="+">
+                        <JFXButton fx:id="jfxbtnAddTeam" buttonType="RAISED" onAction="#handlejfxbtnAddTeamAction" prefHeight="45.0" prefWidth="70.0" text="+">
                            <styleClass>
                               <String fx:value="default-button" />
                               <String fx:value="times-button" />

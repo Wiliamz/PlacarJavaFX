@@ -21,8 +21,8 @@ public class TimeJogoWrapper {
     public TimeJogoWrapper() {
     }
 
-    public TimeJogoWrapper(TimeJogo item) {
-        this.times.add(item);
+    public TimeJogoWrapper(TimeJogo time) {
+        this.times.add(time);
 
     }
 

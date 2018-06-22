@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,30 +55,33 @@ public class ADMStartController implements Initializable {
 
     @FXML
     private void handleEscalarTimeAction(ActionEvent event) {
-        TimeJogoWrapper time = null;
-        File arqxml = new File("src/com/acme/xml/times.xml");
-        try {
-            JfxCbTimeA.getItems().clear();
-            JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
-            Unmarshaller unm = context.createUnmarshaller();
-            time = (TimeJogoWrapper) unm.unmarshal(arqxml);
-            JfxCbTimeA.setItems(FXCollections.observableArrayList(time.getTimes()));
-            JfxCbTimeA.setConverter(new StringConverter<TimeJogo>() {
-                @Override
-                public String toString(TimeJogo object) {
-                    return object.getNome();
-                }
 
-                @Override
-                public TimeJogo fromString(String string) {
-                    return null;
-                }
-            });
+        Platform.runLater(() -> {
+            try {
+                
+                File arqxml = new File("src/com/acme/xml/times.xml");
+                JfxCbTimeA.getItems().clear();
+                JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
+                Unmarshaller unm = context.createUnmarshaller();
+                TimeJogoWrapper time = (TimeJogoWrapper) unm.unmarshal(arqxml);
+                JfxCbTimeA.setItems(FXCollections.observableArrayList(time.getTimes()));
+                JfxCbTimeA.setConverter(new StringConverter<TimeJogo>() {
+                    @Override
+                    public String toString(TimeJogo object) {
+                        return object.getNome();
+                    }
 
-        } catch (JAXBException ex) {
-            Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+                    @Override
+                    public TimeJogo fromString(String string) {
+                        return null;
+                    }
+                });
+                
+            } catch (JAXBException ex) {
+                Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
     }
 
     @FXML
