@@ -2,6 +2,7 @@
 //GRATO DESDE JÁ
 package com.acme.commons;
 
+import com.acme.model.JogoDto;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -27,6 +28,16 @@ public class Server {
 
     public static List<ClientHandler> getClients() {
         return clients;
+    }
+    
+    private static JogoDto jogo = new JogoDto();
+
+    public static JogoDto getJogo() {
+        return jogo;
+    }
+
+    public static void setJogo(JogoDto jogo) {
+        Server.jogo = jogo;
     }
    
 
@@ -61,8 +72,18 @@ public class Server {
         }
     }
     
+    public static void aumentarGol() {
+        getJogo().setPontosA(getJogo().getPontosA() +1);
+        System.out.println("SIZE" + getClients().size() + " JOGooOOOO " + getJogo().getPontosA());
+         for (ClientHandler c : getClients()) {
+            c.sendMessage(getJogo());
+        }
+    }
+    
     public static void avisaTodos() {
         for (ClientHandler c : getClients()) {
+            
+            
             c.sendMessage(new MessageObject("Shazam Carai ta mandando pra geral seu dilho da trueta"));
         }
     }

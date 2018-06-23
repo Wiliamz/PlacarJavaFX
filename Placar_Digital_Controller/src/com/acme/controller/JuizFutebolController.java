@@ -5,6 +5,8 @@
  */
 package com.acme.controller;
 
+import com.acme.model.JogoDto;
+import com.acme.commons.Server;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -21,6 +23,8 @@ import javafx.scene.control.Label;
  */
 public class JuizFutebolController {
 
+    private ClientHandler client;
+    
     @FXML
     private Label lblGolsA;
     @FXML
@@ -66,6 +70,7 @@ public class JuizFutebolController {
     @FXML
     private void handlerPauseGame(ActionEvent event) {
         System.out.println("PÃO DE BATATA");
+        Server.aumentarGol();
     }
 
     @FXML

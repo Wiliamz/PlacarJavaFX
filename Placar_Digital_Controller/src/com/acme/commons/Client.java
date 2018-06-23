@@ -5,6 +5,7 @@
  */
 package com.acme.commons;
 
+import com.acme.model.JogoDto;
 import com.acme.model.MessageObject;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -34,15 +35,15 @@ public class Client {
         // Troca infos do cliente com o handle(o while true é para executar forever)
         while (true) {
             Object obj = dis.readObject();
-            MessageObject msg = (MessageObject) obj;
-            System.out.println(msg);
-
-            if (msg.message.equals("Exit")) {
+            JogoDto jogo = (JogoDto) obj;
+            System.out.println(jogo.getPontosA());
+            if (jogo.getMessage().equals("Exit")) {
                 break;
-            } else if (msg.message.equals("Logou")) {
-
-                System.out.println("maoeeee");
             }
+//            } else if (msg.message.equals("Logou")) {
+//
+//                System.out.println("maoeeee");
+//            }
         }
 
         // Mata Tuto
