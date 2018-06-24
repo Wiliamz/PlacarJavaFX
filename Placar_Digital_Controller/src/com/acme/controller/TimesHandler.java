@@ -12,6 +12,8 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,27 +54,41 @@ public class TimesHandler {
 
     TimeJogo t = new TimeJogo();
     TimeJogoWrapper tw = new TimeJogoWrapper();
-    ArrayList<TimeJogo> time = new ArrayList();
+    ArrayList<TimeJogo> times = new ArrayList();
     String nome;
 
     @FXML
     private void handlejfxbtnAddTeamAction(ActionEvent event) throws PropertyException {
 
         //Fazer método que confere se o Time já não existe!
+        try {
+            File file = new File("src/com/acme/xml/times.xml");
+            JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
+            Unmarshaller unm = context.createUnmarshaller();
+            tw = (TimeJogoWrapper) unm.unmarshal(file);
+            times = tw.getTimes();
+        } catch (JAXBException ex) {
+            Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         nome = JOptionPane.showInputDialog("Digite o nome do seu time");
         if (nome.isEmpty()) {
             while (nome.isEmpty()) {
                 nome = JOptionPane.showInputDialog("Digite o nome do seu time");
             }
         }
+
+        tw.getTimes().stream().filter((timeJogo) -> (timeJogo.getNome().equalsIgnoreCase(nome))).forEachOrdered((TimeJogo _item) -> {
+            nome = JOptionPane.showInputDialog(null, "Esse time já existe!");
+        });
         t.setNome(nome);
         t.setJogadores(null);
         t.setQtdPerdeu(0);
         t.setQtdVenceu(0);
-        time.add(t);
+        times.add(t);
         t = new TimeJogo();
 
-        tw.setTimes(time);
+        tw.setTimes(times);
         try {
             File file = new File("src/com/acme/xml/times.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(TimeJogoWrapper.class);
@@ -80,37 +96,29 @@ public class TimesHandler {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             jaxbMarshaller.marshal(tw, file);
-        } catch (JAXBException ex) {
-            Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!!!");
 
-        Platform.runLater(
-                () -> {
-                    try {
-                        File arqxml = new File("src/com/acme/xml/times.xml");
-                        jfxcbSelectTime.getItems().clear();
-                        JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
-                        Unmarshaller unm = context.createUnmarshaller();
-                        TimeJogoWrapper time = (TimeJogoWrapper) unm.unmarshal(arqxml);
-                        jfxcbSelectTime.setItems(FXCollections.observableArrayList(time.getTimes()));
-                        jfxcbSelectTime.setConverter(new StringConverter<TimeJogo>() {
-                            @Override
-                            public String toString(TimeJogo object) {
-                                return object.getNome();
-                            }
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!!!");
 
-                            @Override
-                            public TimeJogo fromString(String string) {
-                                return null;
-                            }
-                        });
-
-                    } catch (JAXBException ex) {
-                        Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+            JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
+            Unmarshaller unm = context.createUnmarshaller();
+            tw = (TimeJogoWrapper) unm.unmarshal(file);
+            jfxcbSelectTime.getItems().clear();
+            jfxcbSelectTime.setItems(FXCollections.observableArrayList(tw.getTimes()));
+            jfxcbSelectTime.setConverter(new StringConverter<TimeJogo>() {
+                @Override
+                public String toString(TimeJogo object) {
+                    return object.getNome();
                 }
-        );
+
+                @Override
+                public TimeJogo fromString(String string) {
+                    return null;
+                }
+            });
+
+        } catch (JAXBException ex) {
+            Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

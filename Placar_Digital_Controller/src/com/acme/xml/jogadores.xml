@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jogadores>
-    <jogador nome="Neymar" time="Brasil"/>
+    <jogadores>
+        <nome>Neymar</nome>
+        <time>
+            <nome>Brasil</nome>
+            <qtdPerdeu>0</qtdPerdeu>
+            <qtdVenceu>0</qtdVenceu>
+        </time>
+    </jogadores>
 </jogadores>

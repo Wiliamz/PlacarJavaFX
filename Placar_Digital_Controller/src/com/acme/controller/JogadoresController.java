@@ -6,6 +6,7 @@
 package com.acme.controller;
 
 import com.acme.model.Jogador;
+import com.acme.model.JogadoresWrapper;
 import com.acme.model.TimeJogo;
 import com.acme.model.TimeJogoWrapper;
 import com.jfoenix.controls.JFXButton;
@@ -26,6 +27,7 @@ import javafx.util.StringConverter;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
@@ -44,7 +46,9 @@ public class JogadoresController implements Initializable {
     @FXML
     private JFXTextField jfxtfJogador;
 
-    Jogador player = null;
+    Jogador player = new Jogador();
+    JogadoresWrapper pw = new JogadoresWrapper();
+    TimeJogoWrapper tw = new TimeJogoWrapper();
     String nome = "";
 
     /**
@@ -52,33 +56,6 @@ public class JogadoresController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-    @FXML
-    private void handlejfxbtnAddJogadorAction(ActionEvent event) {
-
-        try {
-            nome = jfxtfJogador.getText();
-            System.out.println(nome);
-            player.setNome(nome);
-            player.setTime(jfxcbTimes.getSelectionModel().getSelectedItem());
-
-
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Falta alguma coisa!!", "ERRO", JOptionPane.WARNING_MESSAGE);
-        }
-    }
-
-    @FXML
-    private void handlejfxbtnCancelAction(ActionEvent event) {
-
-        System.exit(0);
-
-    }
-
-    @FXML
-    private void handlejfxcbTimesAction(MouseEvent event) {
         Platform.runLater(
                 () -> {
                     try {
@@ -105,6 +82,58 @@ public class JogadoresController implements Initializable {
                     }
                 }
         );
+
+    }
+
+    @FXML
+    private void handlejfxbtnAddJogadorAction(ActionEvent event) {
+
+        
+        
+        try {
+            nome = jfxtfJogador.getText();
+            System.out.println(nome);
+            player.setNome(nome);
+            player.setTime(jfxcbTimes.getSelectionModel().getSelectedItem());
+            pw.getJogadores().add(player);
+            player = new Jogador();
+            
+            try {
+                File file = new File("src/com/acme/xml/times.xml");
+                JAXBContext jaxbContextTimes = JAXBContext.newInstance(TimeJogoWrapper.class);
+                Marshaller jaxbMarshallerT = jaxbContextTimes.createMarshaller();
+                jaxbMarshallerT.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+                jaxbMarshallerT.marshal(tw, file);
+            } catch (JAXBException ex) {
+                Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            try {
+                File file = new File("src/com/acme/xml/jogadores.xml");
+                JAXBContext jaxbContextJogadores = JAXBContext.newInstance(JogadoresWrapper.class);
+                Marshaller jaxbMarshallerJ = jaxbContextJogadores.createMarshaller();
+                jaxbMarshallerJ.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+                jaxbMarshallerJ.marshal(pw, file);
+                 
+            } catch (JAXBException ex) {
+                Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!!!");
+
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Falta alguma coisa!!", "ERRO", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void handlejfxbtnCancelAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void handlejfxcbTimesAction(MouseEvent event) {
     }
 
 }
