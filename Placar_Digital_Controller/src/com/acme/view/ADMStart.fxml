@@ -37,7 +37,7 @@
                   <JFXButton fx:id="JfxBEditTimes" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#handleEditTimeAction" prefHeight="116.0" prefWidth="376.0" styleClass="default-button" text="Editar Times" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <JFXTextField fx:id="JfxTfTempo" alignment="CENTER" promptText="00:00" styleClass="default-text-field" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <JFXComboBox fx:id="JfxCbTimeA" editable="true" prefHeight="25.0" prefWidth="367.0" styleClass="adm-combo" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <JFXComboBox fx:id="JfxCbTimeA" editable="true" prefHeight="25.0" prefWidth="572.0" styleClass="adm-combo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXComboBox fx:id="JfxCbTimeB" editable="true" prefHeight="25.0" prefWidth="572.0" styleClass="adm-combo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label styleClass="adm-label" text="Casa" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                   <Label styleClass="adm-label" text="Visitante" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                   <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -50,8 +50,8 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <JFXRadioButton styleClass="adm-radiobtn" text="Basquete" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <JFXRadioButton styleClass="adm-radiobtn" text="Futebol" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <JFXRadioButton fx:id="jfxrbBasquete" onAction="#handlejfxrbBasqueteAction" styleClass="adm-radiobtn" text="Basquete" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <JFXRadioButton fx:id="jfxrbFutebol" onAction="#handlejfxrbFutebolAction" styleClass="adm-radiobtn" text="Futebol" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <ImageView fitHeight="29.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="adm-logo" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <ImageView fitHeight="29.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="adm-logo" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>

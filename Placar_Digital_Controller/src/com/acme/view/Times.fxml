@@ -42,13 +42,13 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                      <children>
-                        <JFXButton prefHeight="100.0" prefWidth="150.0" text="Deletar">
+                        <JFXButton fx:id="jfxbtnDeleteJogador" onAction="#handleDeleteJogadorAction" prefHeight="100.0" prefWidth="150.0" text="Deletar">
                            <styleClass>
                               <String fx:value="default-button" />
                               <String fx:value="times-button" />
                            </styleClass>
                         </JFXButton>
-                        <JFXButton prefHeight="100.0" prefWidth="150.0" text="Mover">
+                        <JFXButton fx:id="jfxbtnMoveJogador" onAction="#handleMoveJogadorAction" prefHeight="100.0" prefWidth="150.0" text="Mover">
                            <styleClass>
                               <String fx:value="default-button" />
                               <String fx:value="times-button" />
@@ -58,8 +58,7 @@
                   </HBox>
                   <HBox prefHeight="53.0" prefWidth="300.0">
                      <children>
-                        <JFXComboBox fx:id="jfxCbSelectJogadores" prefHeight="40.0" prefWidth="200.0" promptText="Selecionar Jogador" />
-                        <JFXButton buttonType="RAISED" prefHeight="45.0" prefWidth="70.0" text="+">
+                        <JFXButton fx:id="jfxbtnAddJogador" buttonType="RAISED" onAction="#handleAddJogadorAction" prefHeight="40.0" prefWidth="235.0" text="Adicionar Jogador">
                            <styleClass>
                               <String fx:value="default-button" />
                               <String fx:value="times-button" />
@@ -77,7 +76,7 @@
                       <TableColumn prefWidth="233.0" text="Escalação" />
                     </columns>
                   </TableView>
-                  <JFXButton prefHeight="42.0" prefWidth="605.0" text="Deletar" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <JFXButton fx:id="jfxbtnDeleteJogador2" onAction="#handleDeleteJogadorAction" prefHeight="42.0" prefWidth="605.0" text="Deletar" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <styleClass>
                         <String fx:value="default-button" />
                         <String fx:value="times-button" />
