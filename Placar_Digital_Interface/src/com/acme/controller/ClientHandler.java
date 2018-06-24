@@ -49,17 +49,15 @@ public class ClientHandler extends Thread implements Serializable {
 //        Server.getInstance().avisaTodos();
         while (true) {
             try {
-                System.out.println("ishi");
                 Object obj = dis.readObject();
                 if (obj instanceof JogoDto) {
 
                 } else if (obj instanceof String) {
-                    System.out.println("ONJTECTO" + obj);
+                    System.out.println("Mensagem Front" + obj);
                     if (obj.equals("addPontosA")) {
                         Server.addPontosA();
                     }
                 }
-                System.out.println("CLASSE" + obj);
             } catch (Exception e) {
                 e.printStackTrace();
             }

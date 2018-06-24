@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public final class Server {
 
-    private static Server instancia = null;
+//    private static Server instancia = null;
     private static final List<ClientHandler> clients = new ArrayList<>();
     private static JogoDto jogo;
 
@@ -33,34 +33,30 @@ public final class Server {
         }
 
         jogo = new JogoDto();
-        System.out.println("Server running on port 5056");
+        System.out.println("Rodando na porta 5056");
 
-        // running infinite loop for getting
-        // client request
         while (true) {
             Socket socket = null;
-
             try {
                 // Objeto socket para receber mensagens do cliente
                 socket = serverSocket.accept();
 
-                System.out.println("A new client is connected : " + socket);
+                System.out.println("Novo cliente conectado : " + socket);
 
-                // Obter input e outputStreams
-                System.out.println("Assigning new thread for this client");
-
-                // Novo objeto thread
+                // Novo objeto client com nova thread
                 ClientHandler client = new ClientHandler(socket);
                 client.start();
+                
+                clients.add(client);
                 for (int i = 0; i < 3; i++) {
-                    client.sendMessage(new JogoDto());
+                    client.sendMessage("iusisiuisuisu");
                 }
-                clients.add(client);
-                clients.add(client);
-                clients.add(client);
-                // chama o start
             } catch (Exception e) {
-//                socket.close();
+                try {
+                    socket.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 e.printStackTrace();
             }
         }
@@ -74,12 +70,12 @@ public final class Server {
         return jogo;
     }
 
-    public static synchronized Server getInstance() {
-        if (instancia == null) {
-            instancia = new Server();
-        }
-        return instancia;
-    }
+//    public static synchronized Server getInstance() {
+//        if (instancia == null) {
+//            instancia = new Server();
+//        }
+//        return instancia;
+//    }
 //
 //    public static void rodar() throws IOException {
 //        
@@ -87,10 +83,10 @@ public final class Server {
 //    
 
     public static void addPontosA() {
-//        Server.getInstance().jogo.addPontosA();
-        System.out.println("SIZE" + getClients().size() + " JOGooOOOO " + Server.getJogo().getPontosA());
-        for (ClientHandler c : getClients()) {
-//            c.sendMessage(Server.getInstance().jogo);
+        Server.jogo.addPontosA();
+        System.out.println("SIZE Clientes" + getClients().size() + " Pontuacao Time A " + Server.getJogo().getPontosA());
+        for (ClientHandler c : Server.getClients()) {
+            c.sendMessage(Server.jogo);
         }
     }
 //    

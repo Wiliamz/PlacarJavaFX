@@ -20,7 +20,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            Server.getInstance();
+            Server s = new Server();
         } catch (Exception e) {
         }
     }
