@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFFFF;" styleClass="text-default" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="1200.0" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
@@ -40,11 +40,6 @@
             <Font name="Digital-7" size="26.0" />
          </font>
       </Label>
-      <JFXButton ellipsisString="" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-size: cover; -fx-border-radius: 50px;" styleClass="btn-close" text=" " textAlignment="CENTER" GridPane.columnIndex="9" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-         <font>
-            <Font name="Digital-7" size="20.0" />
-         </font>
-      </JFXButton>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
          <children>
             <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" styleClass="text-digital" text="TIME A" textAlignment="CENTER" textFill="#e8175d">
@@ -563,4 +558,8 @@
          </font>
       </JFXButton>
    </children>
+   <styleClass>
+      <String fx:value="text-default" />
+      <String fx:value="bg-container" />
+   </styleClass>
 </GridPane>

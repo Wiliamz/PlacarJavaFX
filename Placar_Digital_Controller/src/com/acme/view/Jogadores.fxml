@@ -9,25 +9,36 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.JogadoresController">
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="593.0" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.JogadoresController">
    <children>
-      <GridPane prefHeight="200.0" prefWidth="400.0">
+      <GridPane prefHeight="410.0" prefWidth="593.0" styleClass="bg-container">
         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="193.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="73.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="jfxbtnAddJogador" onAction="#handlejfxbtnAddJogadorAction" prefHeight="100.0" prefWidth="100.0" text="Adicionar" GridPane.columnIndex="2" />
-            <JFXButton fx:id="jfxbtnCancel" onAction="#handlejfxbtnCancelAction" prefHeight="100.0" prefWidth="100.0" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <JFXComboBox fx:id="jfxcbTimes" onMouseEntered="#handlejfxcbTimesAction" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXTextField fx:id="jfxtfJogador" promptText="Digite aqui o nome do jogador" GridPane.columnIndex="1" />
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="100.0" text="Nome" />
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="100.0" text="Time" textAlignment="CENTER" GridPane.rowIndex="1" />
+            <JFXButton fx:id="jfxbtnAddJogador" onAction="#handlejfxbtnAddJogadorAction" prefHeight="100.0" prefWidth="100.0" styleClass="btn-default" text="Adicionar" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <JFXButton fx:id="jfxbtnCancel" onAction="#handlejfxbtnCancelAction" prefHeight="100.0" prefWidth="100.0" styleClass="btn-default" text="Cancelar" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <JFXComboBox fx:id="jfxcbTimes" focusColor="#e8175d" onMouseEntered="#handlejfxcbTimesAction" prefHeight="30.0" prefWidth="200.0" styleClass="default-text-field" unFocusColor="#32292f" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <JFXTextField fx:id="jfxtfJogador" focusColor="#e8175d" promptText="Digite aqui o nome do jogador" styleClass="default-text-field" unFocusColor="#32292f" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="507.0" styleClass="text-default-low" text="Nome ;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="749.0" styleClass="text-default-low" text="Time ;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXButton prefHeight="98.0" prefWidth="593.0" styleClass="btn-destaque" text="Concluído" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="513.0" styleClass="title" text="Times" GridPane.columnIndex="1" GridPane.columnSpan="5" />
          </children>
       </GridPane>
    </children>

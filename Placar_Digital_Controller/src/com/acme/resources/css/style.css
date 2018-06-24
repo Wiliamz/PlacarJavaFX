@@ -15,6 +15,16 @@
     -fx-preto: #32292F;
 }
 
+.adm-radiobtn {
+    -fx-selected-color: -fx-rosa;
+    -fx-rippler-fill: -fx-rosa;
+    -fx-selected-color: -fx-rosa;
+    -fx-unselected-color: -fx-preto;
+    -fx-font-family: "Nexa Bold";
+    -fx-color: #FFFFFF ;
+    -fx-font-size: 16px;
+}
+
 .btnAddFalta{
     -fx-background-image: url("../icons/addycard.png") ;
 
@@ -70,6 +80,20 @@
     -fx-font-size: 20px;
     -fx-color: -fx-preto;
     -fx-font-weight: bold;
+    -fx-height: 60px;
+    -fx-max-height: 60px;
+    -fx-min-height: 60px;
+}
+
+.btn-default {
+    -fx-font-family: "Nexa Bold";
+    -fx-background-color: -fx-rosa;
+    -fx-font-size: 16px;
+    -fx-color: -fx-preto;
+    -fx-font-weight: bold;
+    -fx-height: 40px;
+    -fx-max-height: 40px;
+    -fx-min-height: 40px;
 }
 
 .default-text-field {
@@ -80,6 +104,20 @@
     -fx-background-color: #FFFFFF;
 }
 
+.bg-container-black {
+    -fx-background-color: -fx-preto;
+}
+
+.bg-loading {
+    -fx-background-color: #172027;
+}
+
+.label-loading {
+    -fx-font-family: "Digital-7";
+    -fx-text-fill: #6b737b;
+    -fx-font-size: 30px;
+}
+
 .bg-color-destaque {
     -fx-background-color: -fx-rosa;
 }
@@ -87,6 +125,7 @@
 .title {
     -fx-font-family: "Nexa Bold";
     -fx-font-size: 26px;
+    -fx-text-fill: -fx-rosa;
 }
 
 .lbl-destaque {
@@ -127,3 +166,25 @@
     -fx-color: #FFFFFF;
     -fx-font-size: 100px;
 }
+
+.text-default-low {
+    -fx-font-family: "Nexa Bold";
+    -fx-color: #FFFFFF ;
+    -fx-font-size: 14px;
+
+}
+
+.adm-logo-basquete {
+    -fx-background-image: url("../icons/hand.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: auto 100%;
+}
+
+.adm-logo-futebol{
+    -fx-background-image: url("../icons/foot.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: auto 100%;
+}
+
