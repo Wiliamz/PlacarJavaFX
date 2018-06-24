@@ -5,13 +5,8 @@
  */
 package com.acme;
 
-import com.acme.commons.Server;
 import com.acme.commons.Utils;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -41,24 +36,24 @@ public class MainApp extends Application {
 //                }
 //            }
 //        });
-
-        System.out.println(Utils.gerarMd5("123"));
-//        
-        int comServer = JOptionPane.showConfirmDialog(null, "Abrir server junto?");
-        if (comServer == 0) {
-            Task task = new Task<Void>() {
-                @Override
-                public Void call() {
-                    try {
-                        Server.rodar();
-                    } catch (IOException ex) {
-                        Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    return null;
-                }
-            };
-            new Thread(task).start();
-        }
+//
+//        System.out.println(Utils.gerarMd5("123"));
+////        
+//        int comServer = JOptionPane.showConfirmDialog(null, "Abrir server junto?");
+//        if (comServer == 0) {
+//            Task task = new Task<Void>() {
+//                @Override
+//                public Void call() {
+//                    try {
+//                        Server.rodar();
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    return null;
+//                }
+//            };
+//            new Thread(task).start();
+//        }
 
         Parent fxmlCena = FXMLLoader.load(this.getClass().getResource("/com/acme/view/LoginController.fxml"));
         Scene cena = new Scene(fxmlCena);
@@ -66,8 +61,8 @@ public class MainApp extends Application {
         primaryStage.show();
         stage = primaryStage;
         //Método para adicionar icones na barra de tarefas
-        Image icone = new Image("/com/acme/resources/icons/whistle128.png"); //Icone aleatório
-        stage.getIcons().add(icone);
+//        Image icone = new Image("/com/acme/resources/icons/whistle128.png"); //Icone aleatório
+//        stage.getIcons().add(icone);
         
 
 //                                          EXEMPLO SALVAR XML

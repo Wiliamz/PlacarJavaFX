@@ -5,25 +5,25 @@
  */
 package com.acme.controller;
 
-import com.acme.model.JogoDto;
-import com.acme.commons.Server;
+import com.acme.commons.Client;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Observable;
+import java.util.Observer;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Gabriel Cardoso
  */
-public class JuizFutebolController {
+public class JuizFutebolController extends Application implements Observer {
 
-    private ClientHandler client;
+//    private Client client;
     
     @FXML
     private Label lblGolsA;
@@ -70,7 +70,7 @@ public class JuizFutebolController {
     @FXML
     private void handlerPauseGame(ActionEvent event) {
         System.out.println("PÃO DE BATATA");
-        Server.aumentarGol();
+        Client.maisPonto();
     }
 
     @FXML
@@ -119,6 +119,16 @@ public class JuizFutebolController {
 
     @FXML
     private void handlerKickB(ActionEvent event) {
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("ATUALIZOU CARAI");
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Client.getJogo().addObserver(this);
     }
     
 }

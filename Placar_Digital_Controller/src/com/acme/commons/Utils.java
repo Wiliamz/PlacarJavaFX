@@ -26,7 +26,7 @@ public class Utils {
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.update(string.getBytes(), 0, string.length());
         String md5 = new BigInteger(1, m.digest()).toString(16);
-        System.out.println("MD5: " + md5);
+//        System.out.println("MD5: " + md5);
         return md5;
     }
 
@@ -38,7 +38,7 @@ public class Utils {
             UsuarioWrapper uw = (UsuarioWrapper) jaxbUnmarshaller.unmarshal(file);
             for (Usuario u : uw.getUsers()) {
                 if (u.getLogin().equals(login) && u.getPassword().equals(senha)) {
-                    System.out.println("u.getPassword() " + u.getPassword() + " senha " + senha);
+//                    System.out.println("u.getPassword() " + u.getPassword() + " senha " + senha);
                     return u;
                 }
             }

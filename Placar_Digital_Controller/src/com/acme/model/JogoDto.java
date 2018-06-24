@@ -7,12 +7,13 @@ package com.acme.model;
 
 import com.acme.model.TimeJogo;
 import java.io.Serializable;
+import java.util.Observable;
 
 /**
  *
  * @author Gabriel Cardoso
  */
-public class JogoDto implements Serializable {
+public class JogoDto extends Observable implements Serializable {
 
     private int pontosA;
     private int pontosB;
@@ -49,7 +50,15 @@ public class JogoDto implements Serializable {
     }
 
     public void setPontosA(int pontosA) {
-        this.pontosA = pontosA;
+        if (pontosA != this.pontosA) {
+            this.pontosA = pontosA;
+            setChanged();
+        }
+    }
+
+    public void addPontosA() {
+        this.pontosA += 1;
+        setChanged();
     }
 
     public int getPontosB() {

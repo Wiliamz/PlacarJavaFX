@@ -15,7 +15,7 @@
 //
 //    public static void main(String[] args) {
 //        try {
-//            Server.rodar();
+//            Server.getInstance();
 //        } catch (Exception e) {
 //        }
 //    }
