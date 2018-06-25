@@ -33,7 +33,7 @@ public class JogadoresWrapper {
         return jogadores;
     }
 
-    @XmlElement
+    @XmlElement(name = "jogador")
     public void setJogadores(ArrayList<Jogador> jogadores) {
         this.jogadores = jogadores;
     }

@@ -5,6 +5,8 @@
  */
 package com.acme.controller;
 
+import com.acme.model.Jogador;
+import com.acme.model.JogadoresWrapper;
 import com.acme.model.TimeJogo;
 import com.acme.model.TimeJogoWrapper;
 import com.jfoenix.controls.JFXButton;
@@ -24,6 +26,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javax.swing.JOptionPane;
@@ -50,10 +53,15 @@ public class TimesHandler {
     @FXML
     private JFXButton jfxbtnDeleteJogador2;
     @FXML
-    private JFXComboBox<TimeJogo> jfxcbSelectTime;
+    private JFXComboBox<TimeJogo> jfxcbSelecionarTime;
+    @FXML
+    private TableView<Jogador> jfxtcJogadores;
+    @FXML
+    private TableView<Jogador> jfxtcJogadoresEscalados;
 
     TimeJogo t = new TimeJogo();
     TimeJogoWrapper tw = new TimeJogoWrapper();
+    JogadoresWrapper pw = new JogadoresWrapper();
     ArrayList<TimeJogo> times = new ArrayList();
     String nome;
 
@@ -82,6 +90,7 @@ public class TimesHandler {
             nome = JOptionPane.showInputDialog(null, "Esse time já existe!");
         });
         t.setNome(nome);
+        t.setId(tw.getTimes().size());
         t.setJogadores(null);
         t.setQtdPerdeu(0);
         t.setQtdVenceu(0);
@@ -102,9 +111,9 @@ public class TimesHandler {
             JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
             Unmarshaller unm = context.createUnmarshaller();
             tw = (TimeJogoWrapper) unm.unmarshal(file);
-            jfxcbSelectTime.getItems().clear();
-            jfxcbSelectTime.setItems(FXCollections.observableArrayList(tw.getTimes()));
-            jfxcbSelectTime.setConverter(new StringConverter<TimeJogo>() {
+            jfxcbSelecionarTime.getItems().clear();
+            jfxcbSelecionarTime.setItems(FXCollections.observableArrayList(tw.getTimes()));
+            jfxcbSelecionarTime.setConverter(new StringConverter<TimeJogo>() {
                 @Override
                 public String toString(TimeJogo object) {
                     return object.getNome();
@@ -144,6 +153,39 @@ public class TimesHandler {
         } catch (IOException ex) {
             Logger.getLogger(TimesHandler.class
                     .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void handleSelecionarTimeAction(ActionEvent event) {
+        TimeJogo time = jfxcbSelecionarTime.getSelectionModel().getSelectedItem();
+        try {
+            File file = new File("src/com/acme/xml/times.xml");
+            JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
+            Unmarshaller unm = context.createUnmarshaller();
+            tw = (TimeJogoWrapper) unm.unmarshal(file);
+            jfxcbSelecionarTime.getItems().clear();
+            jfxcbSelecionarTime.setItems(FXCollections.observableArrayList(tw.getTimes()));
+            jfxcbSelecionarTime.setConverter(new StringConverter<TimeJogo>() {
+                @Override
+                public String toString(TimeJogo object) {
+                    return object.getNome();
+                }
+
+                @Override
+                public TimeJogo fromString(String string) {
+                    return null;
+                }
+            });
+        } catch (JAXBException ex) {
+            Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (int i = 0; i < tw.getTimes().size(); i++) {
+
+            if (jfxcbSelecionarTime.getSelectionModel().getSelectedItem() == time) {
+                jfxtcJogadores.getItems().clear();
+                jfxtcJogadores.setItems(FXCollections.observableArrayList( tw.getTimes().get(i).getJogadores()));
+            }
         }
     }
 

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jogadores>
-    <jogadores>
-        <nome>Neymar</nome>
-        <time>
-            <nome>Brasil</nome>
-            <qtdPerdeu>0</qtdPerdeu>
-            <qtdVenceu>0</qtdVenceu>
-        </time>
-    </jogadores>
+    <jogador>
+        <nome>Luan</nome>
+        <time>0</time>
+    </jogador>
+    <jogador>
+        <nome>Alex</nome>
+        <time>1</time>
+    </jogador>
+    <jogador>
+        <nome>Wiliam</nome>
+        <time>0</time>
+    </jogador>
 </jogadores>

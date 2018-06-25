@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Jogador {
 
     private String nome;
-    private TimeJogo time;
+    private int timeId;
 
     public String getNome() {
         return nome;
@@ -27,13 +27,13 @@ public class Jogador {
         this.nome = nome;
     }
 
-    public TimeJogo getTime() {
-        return time;
+    public int getTime() {
+        return timeId;
     }
 
     @XmlElement
-    public void setTime(TimeJogo time) {
-        this.time = time;
+    public void setTime(int time) {
+        this.timeId = time;
     }
 
 }

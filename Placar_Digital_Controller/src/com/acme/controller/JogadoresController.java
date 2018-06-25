@@ -63,8 +63,8 @@ public class JogadoresController implements Initializable {
                         jfxcbTimes.getItems().clear();
                         JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
                         Unmarshaller unm = context.createUnmarshaller();
-                        TimeJogoWrapper time = (TimeJogoWrapper) unm.unmarshal(arqxml);
-                        jfxcbTimes.setItems(FXCollections.observableArrayList(time.getTimes()));
+                        tw = (TimeJogoWrapper) unm.unmarshal(arqxml);
+                        jfxcbTimes.setItems(FXCollections.observableArrayList(tw.getTimes()));
                         jfxcbTimes.setConverter(new StringConverter<TimeJogo>() {
                             @Override
                             public String toString(TimeJogo object) {
@@ -87,36 +87,42 @@ public class JogadoresController implements Initializable {
 
     @FXML
     private void handlejfxbtnAddJogadorAction(ActionEvent event) {
+        File file = new File("src/com/acme/xml/jogadores.xml");
+        try {
 
-        
-        
+            JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class);
+            Unmarshaller unm = context.createUnmarshaller();
+            pw = (JogadoresWrapper) unm.unmarshal(file);
+        } catch (JAXBException ex) {
+            Logger.getLogger(JogadoresController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             nome = jfxtfJogador.getText();
             System.out.println(nome);
             player.setNome(nome);
-            player.setTime(jfxcbTimes.getSelectionModel().getSelectedItem());
+            player.setTime(jfxcbTimes.getSelectionModel().getSelectedItem().getId());
             pw.getJogadores().add(player);
+            tw.getTimes().get(player.getTime()).addJogador(player);
             player = new Jogador();
-            
+
             try {
-                File file = new File("src/com/acme/xml/times.xml");
+                File filex = new File("src/com/acme/xml/times.xml");
                 JAXBContext jaxbContextTimes = JAXBContext.newInstance(TimeJogoWrapper.class);
                 Marshaller jaxbMarshallerT = jaxbContextTimes.createMarshaller();
                 jaxbMarshallerT.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-                jaxbMarshallerT.marshal(tw, file);
+                jaxbMarshallerT.marshal(tw, filex);
             } catch (JAXBException ex) {
                 Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             try {
-                File file = new File("src/com/acme/xml/jogadores.xml");
                 JAXBContext jaxbContextJogadores = JAXBContext.newInstance(JogadoresWrapper.class);
                 Marshaller jaxbMarshallerJ = jaxbContextJogadores.createMarshaller();
                 jaxbMarshallerJ.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
                 jaxbMarshallerJ.marshal(pw, file);
-                 
+
             } catch (JAXBException ex) {
                 Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -134,6 +140,7 @@ public class JogadoresController implements Initializable {
 
     @FXML
     private void handlejfxcbTimesAction(MouseEvent event) {
+
     }
 
 }

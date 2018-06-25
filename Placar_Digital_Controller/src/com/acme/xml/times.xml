@@ -1,7 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <times>
-    <times>
+    <times id="0">
+        <jogadores>
+            <nome>Luan</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Wiliam</nome>
+            <time>0</time>
+        </jogadores>
+        <nome>Grêmio</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="1">
+        <jogadores>
+            <nome>Alex</nome>
+            <time>1</time>
+        </jogadores>
+        <nome>Internacional</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="2">
         <nome>Brasil</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="3">
+        <nome>Argentina</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="4">
+        <nome>Uruguai</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="5">
+        <nome>Paraguai</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="6">
+        <nome>Juventude</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="7">
+        <nome>Barcelona</nome>
         <qtdPerdeu>0</qtdPerdeu>
         <qtdVenceu>0</qtdVenceu>
     </times>
