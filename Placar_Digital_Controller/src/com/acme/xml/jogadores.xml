@@ -16,4 +16,12 @@
         <nome>Kaneman</nome>
         <time>0</time>
     </jogador>
+    <jogador>
+        <nome>Ricardo</nome>
+        <time>6</time>
+    </jogador>
+    <jogador>
+        <nome>Cristiano Ronaldo</nome>
+        <time>8</time>
+    </jogador>
 </jogadores>

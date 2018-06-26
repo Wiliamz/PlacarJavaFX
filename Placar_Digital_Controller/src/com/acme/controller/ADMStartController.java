@@ -99,6 +99,7 @@ public class ADMStartController implements Initializable {
             times.setTitle("Escalador de Times");
             times.setScene(new Scene(root1));
             times.show();
+            
             times.setOnCloseRequest(evento -> {
                 loadTeams();
             });

@@ -12,6 +12,7 @@ import com.acme.model.TimeJogoWrapper;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXListView;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -29,7 +30,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -59,7 +62,6 @@ public class TimesHandler implements Initializable {
     private JFXButton jfxbtnDeleteJogador2;
     @FXML
     private JFXComboBox<TimeJogo> jfxcbSelecionarTime;
-    @FXML
     private TableView<Jogador> jfxtcJogadores;
     @FXML
     private TableView<Jogador> jfxtcJogadoresEscalados;
@@ -73,26 +75,24 @@ public class TimesHandler implements Initializable {
     JogadoresWrapper pw = new JogadoresWrapper();
     ArrayList<TimeJogo> times = new ArrayList();
     String nome;
+    TableColumn<Jogador, String> colunaJogadores = new TableColumn<>("Jogador");
 
     private static ADMStartController admSC;
 
     public static void receberInstancia(ADMStartController adm) {
         admSC = adm;
     }
-    
+    @FXML
+    private JFXListView<Jogador> jfxlvJogadores;
+    @FXML
+    private JFXButton jfxbtnAtt;
+
     @FXML
     private void handlejfxbtnAddTeamAction(ActionEvent event) throws PropertyException {
 
         //Fazer método que confere se o Time já não existe!
-        try {
-            File file = new File("src/com/acme/xml/times.xml");
-            JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
-            Unmarshaller unm = context.createUnmarshaller();
-            tw = (TimeJogoWrapper) unm.unmarshal(file);
-            times = tw.getTimes();
-        } catch (JAXBException ex) {
-            Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        loadTeams();
+        times = tw.getTimes();
 
         nome = JOptionPane.showInputDialog("Digite o nome do seu time");
         if (nome.isEmpty()) {
@@ -123,22 +123,7 @@ public class TimesHandler implements Initializable {
 
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!!!");
 
-            JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
-            Unmarshaller unm = context.createUnmarshaller();
-            tw = (TimeJogoWrapper) unm.unmarshal(file);
-            jfxcbSelecionarTime.getItems().clear();
-            jfxcbSelecionarTime.setItems(FXCollections.observableArrayList(tw.getTimes()));
-            jfxcbSelecionarTime.setConverter(new StringConverter<TimeJogo>() {
-                @Override
-                public String toString(TimeJogo object) {
-                    return object.getNome();
-                }
-
-                @Override
-                public TimeJogo fromString(String string) {
-                    return null;
-                }
-            });
+            loadTeams();
 
         } catch (JAXBException ex) {
             Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,6 +136,8 @@ public class TimesHandler implements Initializable {
 
     @FXML
     private void handleMoveJogadorAction(ActionEvent event) {
+        loadTeams();
+
     }
 
     @FXML
@@ -166,42 +153,20 @@ public class TimesHandler implements Initializable {
             stage.show();
 
         } catch (IOException ex) {
-            Logger.getLogger(TimesHandler.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @FXML
     private void handleSelecionarTimeAction(ActionEvent event) {
+        
         TimeJogo time = jfxcbSelecionarTime.getSelectionModel().getSelectedItem();
-        try {
-            File file = new File("src/com/acme/xml/times.xml");
-            JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
-            Unmarshaller unm = context.createUnmarshaller();
-            tw = (TimeJogoWrapper) unm.unmarshal(file);
-            jfxcbSelecionarTime.getItems().clear();
-            jfxcbSelecionarTime.setItems(FXCollections.observableArrayList(tw.getTimes()));
-            jfxcbSelecionarTime.setConverter(new StringConverter<TimeJogo>() {
-                @Override
-                public String toString(TimeJogo object) {
-                    return object.getNome();
-                }
-
-                @Override
-                public TimeJogo fromString(String string) {
-                    return null;
-                }
-            });
-        } catch (JAXBException ex) {
-            Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (int i = 0; i < tw.getTimes().size(); i++) {
-
-            if (jfxcbSelecionarTime.getSelectionModel().getSelectedItem() == time) {
-                jfxtcJogadores.getItems().clear();
-                jfxtcJogadores.setItems(FXCollections.observableArrayList(tw.getTimes().get(i).getJogadores()));
-            }
-        }
+        loadPlayers();
+       
+        colunaJogadores.setCellValueFactory(new PropertyValueFactory<>("Jogador"));
+        jfxlvJogadores.getItems().clear();
+        jfxlvJogadores.setItems(FXCollections.observableArrayList(tw.getTimes().get(time.getId()).getJogadores()));
+        
     }
 
     @FXML
@@ -209,12 +174,60 @@ public class TimesHandler implements Initializable {
         admSC.loadTeams();
         admSC.times.close();
     }
-  
-    
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+    public void loadTeams() {
+//        if(jfxrbBasquete.isSelected()){
+//            
+//        }else {
+//            
+//        }
+
+        Platform.runLater(() -> {
+            try {
+                File arqxml = new File("src/com/acme/xml/times.xml");
+                jfxcbSelecionarTime.getItems().clear();
+                JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
+                Unmarshaller unm = context.createUnmarshaller();
+                tw = (TimeJogoWrapper) unm.unmarshal(arqxml);
+                jfxcbSelecionarTime.setItems(FXCollections.observableArrayList(tw.getTimes()));
+                jfxcbSelecionarTime.setConverter(new StringConverter<TimeJogo>() {
+                    @Override
+                    public String toString(TimeJogo object) {
+                        return object.getNome();
+                    }
+
+                    @Override
+                    public TimeJogo fromString(String string) {
+                        return null;
+                    }
+                });
+            } catch (JAXBException ex) {
+                Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+    public void loadPlayers() {
+//        if(jfxrbBasquete.isSelected()){
+//            
+//        }else {
+//            
+//        }
+
+        Platform.runLater(() -> {
+            try {
+                File arqxml = new File("src/com/acme/xml/jogadores.xml");
+                jfxcbSelecionarTime.getItems().clear();
+                JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class);
+                Unmarshaller unm = context.createUnmarshaller();
+                pw = (JogadoresWrapper) unm.unmarshal(arqxml);
+            } catch (JAXBException ex) {
+                Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
 }
