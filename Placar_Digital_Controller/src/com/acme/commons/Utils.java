@@ -5,12 +5,14 @@
  */
 package com.acme.commons;
 
+import com.acme.enums.Acoes;
 import com.acme.model.Usuario;
 import com.acme.model.UsuarioWrapper;
 import java.io.File;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -46,6 +48,17 @@ public class Utils {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao abrir o arquivo :(", "Erro ao abrir", JOptionPane.WARNING_MESSAGE);
         }
-        return null;    
+        return null;
+    }
+
+    public static HashMap<Acoes, String> metodoFrontDecoder(String acaoEncoded) {
+        String[] splitted = acaoEncoded.split(":");
+        HashMap<Acoes, String> hash = new HashMap<>();
+        hash.put(Acoes.valueOf(splitted[0]), splitted[1]);
+        return hash;
+    }
+
+    public static String metodoBackEncoder(Acoes acao) {
+        return acao.name() + "\n";
     }
 }

@@ -1,6 +1,6 @@
 package com.acme.model;
 
-import com.acme.commons.TipoUsuario;
+import com.acme.enums.TipoUsuario;
 import com.acme.commons.Utils;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;

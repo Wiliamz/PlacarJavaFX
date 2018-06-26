@@ -69,7 +69,6 @@ public class JuizFutebolController extends Application implements Observer {
 
     @FXML
     private void handlerPauseGame(ActionEvent event) {
-        System.out.println("PÃO DE BATATA");
         Client.maisPonto();
     }
 

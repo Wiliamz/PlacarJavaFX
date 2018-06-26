@@ -7,7 +7,7 @@ package com.acme.controller;
 
 import com.acme.MainApp;
 import com.acme.commons.Client;
-import com.acme.commons.TipoUsuario;
+import com.acme.enums.TipoUsuario;
 import com.acme.commons.Utils;
 import com.acme.model.Usuario;
 import com.jfoenix.controls.JFXButton;
@@ -131,7 +131,7 @@ public class LoginController implements Initializable {
                     };
                     new Thread(task).start();
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Placar.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/PlacarFutebol.fxml"));
                     Parent root1 = null;
                     try {
                         root1 = (Parent) fxmlLoader.load();
