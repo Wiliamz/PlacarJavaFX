@@ -188,3 +188,7 @@
     -fx-background-size: auto 100%;
 }
 
+.wrapper-advertise {
+    -fx-float: right;
+    -fx-righ: 0;
+}
