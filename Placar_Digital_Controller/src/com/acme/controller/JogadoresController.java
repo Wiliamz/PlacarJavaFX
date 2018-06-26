@@ -45,60 +45,34 @@ public class JogadoresController implements Initializable {
     private JFXComboBox<TimeJogo> jfxcbTimes;
     @FXML
     private JFXTextField jfxtfJogador;
+    @FXML
+    private JFXButton jfxbtnConcluido;
 
     Jogador player = new Jogador();
     JogadoresWrapper pw = new JogadoresWrapper();
     TimeJogoWrapper tw = new TimeJogoWrapper();
     String nome = "";
+    File file = new File("src/com/acme/xml/jogadores.xml");
+    File arqxml = new File("src/com/acme/xml/times.xml");
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Platform.runLater(
-                () -> {
-                    try {
-                        File arqxml = new File("src/com/acme/xml/times.xml");
-                        jfxcbTimes.getItems().clear();
-                        JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
-                        Unmarshaller unm = context.createUnmarshaller();
-                        tw = (TimeJogoWrapper) unm.unmarshal(arqxml);
-                        jfxcbTimes.setItems(FXCollections.observableArrayList(tw.getTimes()));
-                        jfxcbTimes.setConverter(new StringConverter<TimeJogo>() {
-                            @Override
-                            public String toString(TimeJogo object) {
-                                return object.getNome();
-                            }
-
-                            @Override
-                            public TimeJogo fromString(String string) {
-                                return null;
-                            }
-                        });
-
-                    } catch (JAXBException ex) {
-                        Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-        );
-
+        loadTeams();
+        loadPlayers();
     }
 
     @FXML
     private void handlejfxbtnAddJogadorAction(ActionEvent event) {
-        File file = new File("src/com/acme/xml/jogadores.xml");
-        try {
 
-            JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class);
-            Unmarshaller unm = context.createUnmarshaller();
-            pw = (JogadoresWrapper) unm.unmarshal(file);
-        } catch (JAXBException ex) {
-            Logger.getLogger(JogadoresController.class.getName()).log(Level.SEVERE, null, ex);
-        }
         try {
+            
             nome = jfxtfJogador.getText();
-            System.out.println(nome);
             player.setNome(nome);
             player.setTime(jfxcbTimes.getSelectionModel().getSelectedItem().getId());
             pw.getJogadores().add(player);
@@ -106,17 +80,13 @@ public class JogadoresController implements Initializable {
             player = new Jogador();
 
             try {
-                File filex = new File("src/com/acme/xml/times.xml");
+
                 JAXBContext jaxbContextTimes = JAXBContext.newInstance(TimeJogoWrapper.class);
                 Marshaller jaxbMarshallerT = jaxbContextTimes.createMarshaller();
                 jaxbMarshallerT.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-                jaxbMarshallerT.marshal(tw, filex);
-            } catch (JAXBException ex) {
-                Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                jaxbMarshallerT.marshal(tw, arqxml);
 
-            try {
                 JAXBContext jaxbContextJogadores = JAXBContext.newInstance(JogadoresWrapper.class);
                 Marshaller jaxbMarshallerJ = jaxbContextJogadores.createMarshaller();
                 jaxbMarshallerJ.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -141,6 +111,50 @@ public class JogadoresController implements Initializable {
     @FXML
     private void handlejfxcbTimesAction(MouseEvent event) {
 
+    }
+
+    @FXML
+    private void handlejfxbtnConcluidoAction(ActionEvent event) {
+        loadTeams();
+    }
+
+    private void loadTeams() {
+        Platform.runLater(() -> {
+            try {
+
+                jfxcbTimes.getItems().clear();
+                JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
+                Unmarshaller unm = context.createUnmarshaller();
+                tw = (TimeJogoWrapper) unm.unmarshal(arqxml);
+                jfxcbTimes.setItems(FXCollections.observableArrayList(tw.getTimes()));
+                jfxcbTimes.setConverter(new StringConverter<TimeJogo>() {
+                    @Override
+                    public String toString(TimeJogo object) {
+                        return object.getNome();
+                    }
+
+                    @Override
+                    public TimeJogo fromString(String string) {
+                        return null;
+                    }
+                });
+
+            } catch (JAXBException ex) {
+                Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    private void loadPlayers() {
+
+        try {
+
+            JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class);
+            Unmarshaller unm = context.createUnmarshaller();
+            pw = (JogadoresWrapper) unm.unmarshal(file);
+        } catch (JAXBException ex) {
+            Logger.getLogger(JogadoresController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

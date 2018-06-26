@@ -37,7 +37,7 @@
             <JFXTextField fx:id="jfxtfJogador" focusColor="#e8175d" promptText="Digite aqui o nome do jogador" styleClass="default-text-field" unFocusColor="#32292f" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="507.0" styleClass="text-default-low" text="Nome ;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="749.0" styleClass="text-default-low" text="Time ;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <JFXButton prefHeight="98.0" prefWidth="593.0" styleClass="btn-destaque" text="Concluído" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+            <JFXButton fx:id="jfxbtnConcluido" onAction="#handlejfxbtnConcluidoAction" prefHeight="98.0" prefWidth="593.0" styleClass="btn-destaque" text="Concluído" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="513.0" styleClass="title" text="Times" GridPane.columnIndex="1" GridPane.columnSpan="5" />
          </children>
       </GridPane>

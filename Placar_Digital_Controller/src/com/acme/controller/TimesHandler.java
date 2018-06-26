@@ -23,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,12 +31,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBContext;
@@ -83,7 +88,7 @@ public class TimesHandler implements Initializable {
         admSC = adm;
     }
     @FXML
-    private JFXListView<Jogador> jfxlvJogadores;
+    private JFXListView<String> jfxlvJogadores;
     @FXML
     private JFXButton jfxbtnAtt;
 
@@ -159,14 +164,16 @@ public class TimesHandler implements Initializable {
 
     @FXML
     private void handleSelecionarTimeAction(ActionEvent event) {
-        
+
         TimeJogo time = jfxcbSelecionarTime.getSelectionModel().getSelectedItem();
         loadPlayers();
-       
-        colunaJogadores.setCellValueFactory(new PropertyValueFactory<>("Jogador"));
+
         jfxlvJogadores.getItems().clear();
-        jfxlvJogadores.setItems(FXCollections.observableArrayList(tw.getTimes().get(time.getId()).getJogadores()));
-        
+        for (Jogador jogador : time.getJogadores()) {
+            if (jogador.getTime() == time.getId()) {
+                jfxlvJogadores.getItems().addAll(jogador.getNome());
+            }
+        }
     }
 
     @FXML
@@ -211,6 +218,7 @@ public class TimesHandler implements Initializable {
             }
         });
     }
+
     public void loadPlayers() {
 //        if(jfxrbBasquete.isSelected()){
 //            
@@ -221,7 +229,7 @@ public class TimesHandler implements Initializable {
         Platform.runLater(() -> {
             try {
                 File arqxml = new File("src/com/acme/xml/jogadores.xml");
-                jfxcbSelecionarTime.getItems().clear();
+                
                 JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class);
                 Unmarshaller unm = context.createUnmarshaller();
                 pw = (JogadoresWrapper) unm.unmarshal(arqxml);

@@ -78,8 +78,7 @@ public class ADMStartController implements Initializable {
             stage.show();
 
         } catch (IOException ex) {
-            Logger.getLogger(ADMStartController.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -104,8 +103,7 @@ public class ADMStartController implements Initializable {
                 loadTeams();
             });
         } catch (IOException ex) {
-            Logger.getLogger(ADMStartController.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
