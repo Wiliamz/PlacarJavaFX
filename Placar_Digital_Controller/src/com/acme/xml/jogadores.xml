@@ -12,4 +12,8 @@
         <nome>Wiliam</nome>
         <time>0</time>
     </jogador>
+    <jogador>
+        <nome>Kaneman</nome>
+        <time>0</time>
+    </jogador>
 </jogadores>

@@ -61,8 +61,8 @@ public class MainApp extends Application {
         primaryStage.show();
         stage = primaryStage;
         //Método para adicionar icones na barra de tarefas
-//        Image icone = new Image("/com/acme/resources/icons/whistle128.png"); //Icone aleatório
-//        stage.getIcons().add(icone);
+        Image icone = new Image("/com/acme/resources/icons/whistle32.png"); //Icone aleatório
+        stage.getIcons().add(icone);
         
 
 //                                          EXEMPLO SALVAR XML

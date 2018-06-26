@@ -17,17 +17,22 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.StringConverter;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBContext;
@@ -40,7 +45,7 @@ import javax.xml.bind.Unmarshaller;
  *
  * @author wiliam
  */
-public class TimesHandler {
+public class TimesHandler implements Initializable {
 
     @FXML
     private JFXButton jfxbtnAddTeam;
@@ -58,6 +63,10 @@ public class TimesHandler {
     private TableView<Jogador> jfxtcJogadores;
     @FXML
     private TableView<Jogador> jfxtcJogadoresEscalados;
+    @FXML
+    private JFXButton jfxbtnConcluido;
+    @FXML
+    private AnchorPane jfxapTimes;
 
     TimeJogo t = new TimeJogo();
     TimeJogoWrapper tw = new TimeJogoWrapper();
@@ -65,6 +74,12 @@ public class TimesHandler {
     ArrayList<TimeJogo> times = new ArrayList();
     String nome;
 
+    private static ADMStartController admSC;
+
+    public static void receberInstancia(ADMStartController adm) {
+        admSC = adm;
+    }
+    
     @FXML
     private void handlejfxbtnAddTeamAction(ActionEvent event) throws PropertyException {
 
@@ -184,9 +199,22 @@ public class TimesHandler {
 
             if (jfxcbSelecionarTime.getSelectionModel().getSelectedItem() == time) {
                 jfxtcJogadores.getItems().clear();
-                jfxtcJogadores.setItems(FXCollections.observableArrayList( tw.getTimes().get(i).getJogadores()));
+                jfxtcJogadores.setItems(FXCollections.observableArrayList(tw.getTimes().get(i).getJogadores()));
             }
         }
+    }
+
+    @FXML
+    private void handlejfxbtnConcluidoAction(ActionEvent event) {
+        admSC.loadTeams();
+        admSC.times.close();
+    }
+  
+    
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 
 }

@@ -52,4 +52,29 @@
         <qtdPerdeu>0</qtdPerdeu>
         <qtdVenceu>0</qtdVenceu>
     </times>
+    <times id="8">
+        <nome>Real Madrid</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="9">
+        <nome>Arsenal</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="10">
+        <nome>Chapecoense</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="11">
+        <nome>Sevilla</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
+    <times id="12">
+        <nome>São Paulo</nome>
+        <qtdPerdeu>0</qtdPerdeu>
+        <qtdVenceu>0</qtdVenceu>
+    </times>
 </times>

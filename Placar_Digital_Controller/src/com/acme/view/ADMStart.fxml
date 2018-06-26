@@ -6,13 +6,14 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="600.0" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.ADMStartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="600.0" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.ADMStartController">
    <children>
       <GridPane prefHeight="432.0" prefWidth="600.0" styleClass="bg-container">
          <columnConstraints>
@@ -36,13 +37,13 @@
          <children>
             <JFXButton fx:id="JfxBEditTimes" alignment="CENTER" contentDisplay="CENTER" onAction="#handleEditTimeAction" prefHeight="116.0" prefWidth="376.0" styleClass="btn-default" text="Editar Times" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <JFXTextField fx:id="JfxTfTempo" alignment="CENTER" focusColor="#e8175d" promptText="00:00" styleClass="default-text-field" unFocusColor="#32292f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <JFXComboBox fx:id="JfxCbTimeA" editable="true" focusColor="#e8175d" prefHeight="25.0" prefWidth="367.0" unFocusColor="#32292f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <JFXComboBox fx:id="JfxCbTimeA" focusColor="#e8175d" prefHeight="25.0" prefWidth="367.0" unFocusColor="#32292f" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <styleClass>
                   <String fx:value="adm-combo" />
                   <String fx:value="default-text-field" />
                </styleClass>
             </JFXComboBox>
-            <JFXComboBox fx:id="JfxCbTimeB" editable="true" focusColor="#e8175d" prefHeight="25.0" prefWidth="572.0" unFocusColor="#32292f" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <JFXComboBox fx:id="JfxCbTimeB" focusColor="#e8175d" prefHeight="25.0" prefWidth="572.0" unFocusColor="#32292f" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <styleClass>
                   <String fx:value="adm-combo" />
                   <String fx:value="default-text-field" />
@@ -65,8 +66,11 @@
                         <String fx:value="adm-radiobtn" />
                         <String fx:value="text-default-low" />
                      </styleClass>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="tgEsporte" />
+                     </toggleGroup>
                   </JFXRadioButton>
-                  <JFXRadioButton fx:id="jfxrbFutebol" onAction="#handlejfxrbFutebolAction" text="Futebol" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <JFXRadioButton fx:id="jfxrbFutebol" onAction="#handlejfxrbFutebolAction" selected="true" text="Futebol" toggleGroup="$tgEsporte" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <styleClass>
                         <String fx:value="adm-radiobtn" />
                         <String fx:value="text-default-low" />
