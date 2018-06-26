@@ -22,7 +22,7 @@ public final class Server {
 //    private static Server instancia = null;
     private static final List<ClientHandler> clients = new ArrayList<>();
     private static JogoDto jogo;
-
+    
     public Server() {
         // server is listening on port 5056
         ServerSocket serverSocket = null;
@@ -31,16 +31,16 @@ public final class Server {
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         jogo = new JogoDto();
         System.out.println("Rodando na porta 5056");
-
+        
         while (true) {
             Socket socket = null;
             try {
                 // Objeto socket para receber mensagens do cliente
                 socket = serverSocket.accept();
-
+                
                 System.out.println("Novo cliente conectado : " + socket);
 
                 // Novo objeto client com nova thread
@@ -61,11 +61,11 @@ public final class Server {
             }
         }
     }
-
+    
     public static List<ClientHandler> getClients() {
         return clients;
     }
-
+    
     public static JogoDto getJogo() {
         return jogo;
     }
@@ -81,12 +81,13 @@ public final class Server {
 //        
 //    }
 //    
-
     public static void addPontosA() {
         Server.jogo.addPontosA();
         System.out.println("SIZE Clientes" + getClients().size() + " Pontuacao Time A " + Server.getJogo().getPontosA());
         for (ClientHandler c : Server.getClients()) {
-            c.sendMessage(Server.jogo);
+            System.out.println("batatatatatatatatattattatata" + c.getName());
+//            c.sendMessage(Server.jogo);
+            c.sendMessage("setPontosA:" + Server.jogo.getPontosA());
         }
     }
 //    

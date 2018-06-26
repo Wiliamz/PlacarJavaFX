@@ -29,23 +29,4 @@ public class Utils {
         System.out.println("MD5: " + md5);
         return md5;
     }
-
-    public static Usuario fazerLogin(String login, String senha) throws NoSuchAlgorithmException {
-        try {
-            File file = new File("src/com/acme/xml/usuarios.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(UsuarioWrapper.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            UsuarioWrapper uw = (UsuarioWrapper) jaxbUnmarshaller.unmarshal(file);
-            for (Usuario u : uw.getUsers()) {
-                if (u.getLogin().equals(login) && u.getPassword().equals(senha)) {
-                    System.out.println("u.getPassword() " + u.getPassword() + " senha " + senha);
-                    return u;
-                }
-            }
-        } catch (JAXBException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao abrir o arquivo :(", "Erro ao abrir", JOptionPane.WARNING_MESSAGE);
-        }
-        return null;    
-    }
 }

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.acme.commons;
+package com.acme.enums;
 
 /**
  *
  * @author Gabriel Cardoso
  */
-public enum TipoTempo {
-
-    SEGUNDOS,
-    MINUTOS,
-    HORAS
+public enum TipoUsuario {
+    ADMIN,
+    MARKETING,
+    JUIZ,
+    COMUM
 }

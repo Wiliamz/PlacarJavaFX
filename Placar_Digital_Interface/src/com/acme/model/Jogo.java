@@ -5,8 +5,8 @@
  */
 package com.acme.model;
 
-import com.acme.commons.TipoJogo;
-import com.acme.commons.TipoTempo;
+import com.acme.enums.TipoJogo;
+import com.acme.enums.TipoTempo;
 
 /**
  *
