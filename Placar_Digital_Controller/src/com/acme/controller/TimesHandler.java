@@ -125,9 +125,11 @@ public class TimesHandler implements Initializable {
             time.getJogadores().stream().filter((j) -> (j.getNome().equals(nomeJogador) && j.getTime() == time.getId())).forEachOrdered((j) -> {
                 time.getJogadores().remove(j);
             });
+
             saveTeams();
             savePlayers();
             loadPlayers();
+            handleSelecionarTimeAction(event);
         }
     }
 
@@ -280,19 +282,23 @@ public class TimesHandler implements Initializable {
     }
 
     public void loadPlayers() {
-
-        Platform.runLater(() -> {
-            try {
-                File arqxml = new File("src/com/acme/xml/jogadores.xml");
-                JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class
-                );
-                Unmarshaller unm = context.createUnmarshaller();
-                pw = (JogadoresWrapper) unm.unmarshal(arqxml);
-
-            } catch (JAXBException ex) {
-                Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            loadTeams();
+            for (int i = 0; i < tw.getTimes().size(); i++) {
+                pw.getJogadores().addAll(tw.getTimes().get(i).getJogadores());
             }
-        });
+            File arqxml = new File("src/com/acme/xml/jogadores.xml");
+            JAXBContext jaxbContextJogadores = JAXBContext.newInstance(JogadoresWrapper.class);
+            Marshaller jaxbMarshallerJ = jaxbContextJogadores.createMarshaller();
+            jaxbMarshallerJ.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            jaxbMarshallerJ.marshal(pw, arqxml);
+            JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class);
+            Unmarshaller unm = context.createUnmarshaller();
+            pw = (JogadoresWrapper) unm.unmarshal(arqxml);
+
+        } catch (JAXBException ex) {
+            Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
