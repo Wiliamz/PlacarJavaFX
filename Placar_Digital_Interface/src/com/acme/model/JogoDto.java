@@ -5,15 +5,16 @@
  */
 package com.acme.model;
 
-import com.acme.model.TimeJogo;
+import com.acme.enums.TipoJogo;
 import java.io.Serializable;
-import java.util.Observable;
+import java.util.List;
+import java.util.Observer;
 
 /**
  *
  * @author Gabriel Cardoso
  */
-public class JogoDto extends Observable implements Serializable {
+public class JogoDto implements Serializable {
 
     private int pontosA;
     private int pontosB;
@@ -21,27 +22,34 @@ public class JogoDto extends Observable implements Serializable {
     private int faltasB;
     private int numJogadoresA;
     private int numJogadoresB;
-    private double tempoProrrogacacao;
+    private int tempoProrrogacacao;
     private boolean pausado;
     private boolean terminada;
-    private TimeJogo timeA;
-    private TimeJogo timeB;
+    private boolean jogando;
+    private String timeA;
+    private String timeB;
+    private TipoJogo tipoJogo;
+    private int tempoEstimado;
+    private int tempoDecorrido;
+    private String base64Image;
+    private String textoMarketing;
+    private int numRepeticoesMarketing;
+
     private String message;
 
-    public JogoDto(int pontosA, int pontosB, int faltasA, int faltasB, int numJogadoresA, int numJogadoresB, double tempoProrrogacacao, boolean pausado, boolean terminada, TimeJogo timeA, TimeJogo timeB) {
-        this.pontosA = pontosA;
-        this.pontosB = pontosB;
-        this.faltasA = faltasA;
-        this.faltasB = faltasB;
-        this.numJogadoresA = numJogadoresA;
-        this.numJogadoresB = numJogadoresB;
-        this.tempoProrrogacacao = tempoProrrogacacao;
-        this.pausado = pausado;
-        this.terminada = terminada;
-        this.timeA = timeA;
-        this.timeB = timeB;
-    }
-
+//    public JogoDto(int pontosA, int pontosB, int faltasA, int faltasB, int numJogadoresA, int numJogadoresB, double tempoProrrogacacao, boolean pausado, boolean terminada, String timeA, String timeB) {
+//        this.pontosA = pontosA;
+//        this.pontosB = pontosB;
+//        this.faltasA = faltasA;
+//        this.faltasB = faltasB;
+//        this.numJogadoresA = numJogadoresA;
+//        this.numJogadoresB = numJogadoresB;
+//        this.tempoProrrogacacao = tempoProrrogacacao;
+//        this.pausado = pausado;
+//        this.terminada = terminada;
+//        this.timeA = timeA;
+//        this.timeB = timeB;
+//    }
     public JogoDto() {
     }
 
@@ -50,15 +58,13 @@ public class JogoDto extends Observable implements Serializable {
     }
 
     public void setPontosA(int pontosA) {
-        if (pontosA != this.pontosA) {
-            this.pontosA = pontosA;
-            setChanged();
-        }
+        this.pontosA = pontosA;
+        
     }
 
     public void addPontosA() {
         this.pontosA += 1;
-        setChanged();
+        
     }
 
     public int getPontosB() {
@@ -67,6 +73,7 @@ public class JogoDto extends Observable implements Serializable {
 
     public void setPontosB(int pontosB) {
         this.pontosB = pontosB;
+        
     }
 
     public int getFaltasA() {
@@ -75,6 +82,7 @@ public class JogoDto extends Observable implements Serializable {
 
     public void setFaltasA(int faltasA) {
         this.faltasA = faltasA;
+        
     }
 
     public int getFaltasB() {
@@ -83,6 +91,7 @@ public class JogoDto extends Observable implements Serializable {
 
     public void setFaltasB(int faltasB) {
         this.faltasB = faltasB;
+        
     }
 
     public int getNumJogadoresA() {
@@ -91,6 +100,7 @@ public class JogoDto extends Observable implements Serializable {
 
     public void setNumJogadoresA(int numJogadoresA) {
         this.numJogadoresA = numJogadoresA;
+        
     }
 
     public int getNumJogadoresB() {
@@ -99,14 +109,16 @@ public class JogoDto extends Observable implements Serializable {
 
     public void setNumJogadoresB(int numJogadoresB) {
         this.numJogadoresB = numJogadoresB;
+        
     }
 
-    public double getTempoProrrogacacao() {
+    public int getTempoProrrogacacao() {
         return tempoProrrogacacao;
     }
 
-    public void setTempoProrrogacacao(double tempoProrrogacacao) {
+    public void setTempoProrrogacacao(int tempoProrrogacacao) {
         this.tempoProrrogacacao = tempoProrrogacacao;
+        
     }
 
     public boolean isPausado() {
@@ -115,6 +127,7 @@ public class JogoDto extends Observable implements Serializable {
 
     public void setPausado(boolean pausado) {
         this.pausado = pausado;
+        
     }
 
     public boolean isTerminada() {
@@ -123,22 +136,34 @@ public class JogoDto extends Observable implements Serializable {
 
     public void setTerminada(boolean terminada) {
         this.terminada = terminada;
+        
+    }
+    
+    public boolean isJogando() {
+        return jogando;
     }
 
-    public TimeJogo getTimeA() {
+    public void setJogando(boolean jogando) {
+        this.jogando = jogando;
+        
+    }
+
+    public String getTimeA() {
         return timeA;
     }
 
-    public void setTimeA(TimeJogo timeA) {
+    public void setTimeA(String timeA) {
         this.timeA = timeA;
+        
     }
 
-    public TimeJogo getTimeB() {
+    public String getTimeB() {
         return timeB;
     }
 
-    public void setTimeB(TimeJogo timeB) {
+    public void setTimeB(String timeB) {
         this.timeB = timeB;
+        
     }
 
     public String getMessage() {
@@ -148,6 +173,56 @@ public class JogoDto extends Observable implements Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public TipoJogo getTipoJogo() {
+        return tipoJogo;
+    }
+
+    public void setTipoJogo(TipoJogo tipoJogo) {
+        this.tipoJogo = tipoJogo;
+    }
+
+    public int getTempoEstimado() {
+        return tempoEstimado;
+    }
+
+    public void setTempoEstimado(int tempoEstimado) {
+        this.tempoEstimado = tempoEstimado;
+    }
+
+    public int getTempoDecorrido() {
+        return tempoDecorrido;
+    }
+
+    public void setTempoDecorrido(int tempoDecorrido) {
+        this.tempoDecorrido = tempoDecorrido;
+    }
+
+    public String getBase64Image() {
+        return base64Image;
+    }
+
+    public void setBase64Image(String base64Image) {
+        this.base64Image = base64Image;
+    }
+
+    public String getTextoMarketing() {
+        return textoMarketing;
+    }
+
+    public void setTextoMarketing(String textoMarketing) {
+        this.textoMarketing = textoMarketing;
+    }
+
+    public int getNumRepeticoesMarketing() {
+        return numRepeticoesMarketing;
+    }
+
+    public void setNumRepeticoesMarketing(int numRepeticoesMarketing) {
+        this.numRepeticoesMarketing = numRepeticoesMarketing;
+    }
+    
+    
 
     @Override
     public String toString() {

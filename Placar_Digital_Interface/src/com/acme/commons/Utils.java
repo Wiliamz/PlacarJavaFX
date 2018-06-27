@@ -5,6 +5,7 @@
  */
 package com.acme.commons;
 
+import com.acme.enums.Acoes;
 import com.acme.model.Usuario;
 import com.acme.model.UsuarioWrapper;
 import java.io.File;
@@ -28,5 +29,29 @@ public class Utils {
         String md5 = new BigInteger(1, m.digest()).toString(16);
         System.out.println("MD5: " + md5);
         return md5;
+    }
+
+    public static int tempoConverter(String tempo) {
+        String[] splittedTime = tempo.split("-");
+        return (Integer.parseInt(splittedTime[0]) * 60) + Integer.parseInt(splittedTime[1]);
+
+    }
+
+    public static void callServerMethod(String obj) {
+        if (obj.indexOf(";") > -1) {
+            String[] splitted = obj.split(";");
+            if (splitted[0].equals(Acoes.INICIAR_JOGO.name())) {
+                Server.startGame(splitted[1], splitted[2], splitted[3], splitted[4]);
+            }
+            System.out.println("OBJECTO" + obj);
+        } else {
+            if (obj.equals(Acoes.ADD_PONTOS_A.name())) {
+                Server.addPontosA();
+            } else if (obj.equals(Acoes.PAUSE.name())) {
+                Server.pauseGame();
+            } else if (obj.equals(Acoes.INICIAR_JOGO.name())) {
+//                Server.startGame(1);
+            }
+        }
     }
 }

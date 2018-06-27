@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Wiliam Felber
  */
 @XmlRootElement
-public class Usuario extends Role implements Serializable {
+public class Usuario implements Serializable {
 
     /**
      * Declaração de atributos da classe.
