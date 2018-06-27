@@ -6,7 +6,9 @@
 package com.acme.controller;
 
 import static com.acme.MainApp.stage;
+import com.acme.commons.Client;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +39,8 @@ public class MarketingController implements Initializable {
     @FXML
     private ImageView imagepreview;
     @FXML
+    private JFXTextField txtTexto;
+    @FXML
     private JFXButton btnChoseFile;
 
     /**
@@ -58,9 +62,15 @@ public class MarketingController implements Initializable {
         byte[] bytes = Files.readAllBytes(path);
         byte[] encoded = Base64.getEncoder().encode(bytes);
         String encodedString = new String(encoded);
-        System.out.println(encodedString);
+//        System.out.println(encodedString);
+        Client.setImagem(";"+ encodedString);
        
 //        byte[] encoded = Base64.encodeBase64(FileUtils.readFileToByteArray(file));
 //        return new String(encoded, StandardCharsets.US_ASCII);
+    }
+
+    @FXML
+    private void enviarTexto(ActionEvent event) {
+        Client.setImagem(txtTexto.getText());
     }
 }

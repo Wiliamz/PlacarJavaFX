@@ -29,18 +29,18 @@ import javafx.application.Platform;
  * @author Gabriel Cardoso
  */
 public class Client {
-
+    
     public static ObjectOutputStream dos;
     public static ObjectInputStream dis;
     public static OutputStreamWriter paraServer;
     public static InputStreamReader streamReader;
-
+    
     private static JogoDto jogo = new JogoDto();
-
+    
     public static JogoDto getJogo() {
         return jogo;
     }
-
+    
     public static void rodar(String host) throws IOException, ClassNotFoundException, UnknownHostException {
         // Ip do host ---- pegará por texto, por enquanto só teste
         InetAddress ip = InetAddress.getByName(host);
@@ -70,11 +70,11 @@ public class Client {
 //            System.out.println("mensageeeeeeem " + msg);
         }
     }
-
+    
     public static void bindToJogo(Observer observer) {
         Client.jogo.attach(observer);
     }
-
+    
     public static void enviarMsg(String obj) {
         try {
             Client.paraServer.write(obj);
@@ -83,12 +83,12 @@ public class Client {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public static void startGame(String tipoJogo, String tempoJogo, String timeA, String timeB) {
         String params = Acoes.INICIAR_JOGO.name() + ";" + tipoJogo + ";" + tempoJogo + ";" + timeA + ";" + timeB;
         Client.enviarMsg(Utils.metodoBackEncoder(params));
     }
-
+    
     public static void startContadorTempo() {
         new Thread() {
             public void run() {
@@ -98,7 +98,6 @@ public class Client {
                         Timer timer = new Timer();
                         TimerTask task = new TimerTask() {
                             public void run() {
-                                System.out.println("Client.jogo.getTempoEstimado(" + Client.jogo.getTempoEstimado());
                                 if (Client.jogo.getTempoDecorrido() < Client.jogo.getTempoEstimado() && !Client.jogo.isPausado() && !Client.jogo.isTerminada()) {
                                     Client.jogo.setTempoDecorrido(Client.jogo.getTempoDecorrido() + 1);
                                     if (Client.jogo.getTempoDecorrido() == Client.jogo.getTempoEstimado()) {
@@ -117,43 +116,78 @@ public class Client {
             }
         }.start();
     }
-
+    
+    public static void startContadorTempoBola() {
+        new Thread() {
+            public void run() {
+                //Do some stuff in another thread
+                Platform.runLater(new Runnable() {
+                    public void run() {
+                        Timer timer = new Timer();
+                        TimerTask task = new TimerTask() {
+                            public void run() {
+                                if (Client.jogo.getTempoBola() < 24 && !Client.jogo.isPausado() && !Client.jogo.isTerminada()) {
+                                    Client.jogo.setTempoBola(Client.jogo.getTempoBola() + 1);
+                                } else {
+                                    Client.jogo.setTempoBola(0);
+                                }
+                            }
+                        };
+                        timer.schedule(task, 1000, 1000);
+                    }
+                });
+            }
+        }.start();
+    }
+    
     public static void addProrrogacao(String tempo) {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.PRORROGACAO + ";" + Utils.tempoConverter(tempo)));
     }
-
+    
     public static void addPontoA() {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.ADD_PONTOS_A));
     }
-
+    
+    public static void addPontoA(int qtd) {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.ADD_PONTOS_A + ";" + qtd));
+    }
+    
     public static void addPontoB() {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.ADD_PONTOS_B));
     }
-
+    
+    public static void addPontoB(int qtd) {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.ADD_PONTOS_B + ";" + qtd));
+    }
+    
     public static void removerPontoA() {
-//        if (Client.getJogo().getPontosA() > 0) {
-        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_A));
-//        }
+        if (Client.getJogo().getPontosA() > 0) {
+            Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_A));
+        }
     }
-
+    
     public static void removerPontoB() {
-//        if (Client.getJogo().getPontosB() > 0) {
-        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_B));
-//        }
+        if (Client.getJogo().getPontosB() > 0) {
+            Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_B));
+        }
     }
-
+    
+    public static void setImagem(String base) {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.IMAGEM + ";" + base));
+    }
+    
     public static void pausarJogo() {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.PAUSE));
     }
-
+    
     public static void continuarJogo() {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.PLAY));
     }
-
+    
     public static void endGame() {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.STOP));
     }
-
+    
     public static void atualizarJogo(String acao, String valor) {
         if (valor.indexOf(";") > -1) {
             String[] splittedValue = valor.split(";");
@@ -163,12 +197,14 @@ public class Client {
                 j.setTempoEstimado(Utils.tempoConverter(splittedValue[1]));
                 j.setTimeA(splittedValue[2]);
                 j.setTimeB(splittedValue[3]);
+                j.setBase64Image("");
                 j.attach(Client.jogo.getObservers().get(0));
                 Client.jogo = j;
                 Client.jogo.setJogando(true);
                 startContadorTempo();
+                startContadorTempoBola();
             }
-
+            
         } else {
             if (acao.equals(Acoes.PLAY.name())) {
                 Client.jogo.setPausado(false);
@@ -176,9 +212,9 @@ public class Client {
             } else if (acao.equals(Acoes.PAUSE.name())) {
                 Client.jogo.setPausado(true);
             } else if (acao.equals(Acoes.ADD_PONTOS_A.name())) {
-                Client.jogo.addPontosA();
+                Client.jogo.addPontosA(Integer.parseInt(valor));
             } else if (acao.equals(Acoes.ADD_PONTOS_B.name())) {
-                Client.jogo.addPontosB();
+                Client.jogo.addPontosB(Integer.parseInt(valor));
             } else if (acao.equals(Acoes.REMOVE_PONTOS_A.name())) {
                 Client.jogo.removePontosA();
             } else if (acao.equals(Acoes.REMOVE_PONTOS_B.name())) {
@@ -186,10 +222,11 @@ public class Client {
             } else if (acao.equals(Acoes.PRORROGACAO.name())) {
                 Client.jogo.setTempoProrrogacacao(Integer.parseInt(valor));
                 Client.jogo.setTempoEstimado(Client.jogo.getTempoEstimado() + Integer.parseInt(valor));
+            } else if (acao.equals(Acoes.IMAGEM.name())) {
+                Client.jogo.setBase64Image(valor);
             } else if (acao.equals(Acoes.STOP.name())) {
                 Client.jogo.setTerminada(true);
             }
         }
-        System.out.println("ACAO : " + acao + "   ------ valor : " + valor);
     }
 }

@@ -31,27 +31,16 @@
          </children>
       </Pane>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="132.0" prefWidth="668.0" styleClass="title" text="Marketing" GridPane.columnSpan="3" />
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="132.0" prefWidth="668.0" styleClass="title" text="Preview" GridPane.columnSpan="3" GridPane.rowIndex="2" />
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <JFXTextField alignment="CENTER" focusColor="#e8175d" promptText="Exibir Texto" styleClass="default-text-field" unFocusColor="#32292f">
+            <JFXTextField fx:id="txtTexto" alignment="CENTER" focusColor="#e8175d" promptText="Exibir Texto" styleClass="default-text-field" unFocusColor="#32292f">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXButton maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="652.0" styleClass="btn-default" text="Enviar Texto">
+            <JFXButton maxWidth="1.7976931348623157E308" onAction="#enviarTexto" prefHeight="25.0" prefWidth="652.0" styleClass="btn-default" text="Enviar Texto">
                <VBox.margin>
                   <Insets top="30.0" />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="btnChoseFile" maxWidth="1.7976931348623157E308" onAction="#choseAd" prefHeight="25.0" prefWidth="652.0" styleClass="btn-default" text="Escolher Imagem">
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="652.0" styleClass="btn-default" text="Enviar Imagem">
-               <VBox.margin>
-                  <Insets top="15.0" />
                </VBox.margin>
             </JFXButton>
          </children>

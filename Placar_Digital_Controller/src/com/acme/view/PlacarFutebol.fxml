@@ -42,40 +42,8 @@
             <Font name="Digital-7" size="20.0" />
          </font>
       </JFXButton>
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="585.0" styleClass="text-placar" text="FALTAS" textAlignment="CENTER" textFill="#e8175d">
-               <font>
-                  <Font name="Digital-7" size="75.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="658.0" styleClass="text-placar" text="0" textAlignment="CENTER" textFill="#e8175d">
-               <font>
-                  <Font name="Digital-7" size="150.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="900.0" styleClass="text-placar" text="FALTAS" textAlignment="CENTER" textFill="#e8175d">
-               <font>
-                  <Font name="Digital-7" size="75.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="703.0" styleClass="text-placar" text="0" textAlignment="CENTER" textFill="#e8175d">
-               <font>
-                  <Font name="Digital-7" size="150.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="900.0" styleClass="text-placar" text="tempo" textAlignment="CENTER" textFill="#e8175d">
@@ -86,7 +54,7 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="900.0" styleClass="text-placar" text="1" textAlignment="CENTER" textFill="#e8175d">
+            <Label fx:id="lblTempo" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="900.0" styleClass="text-placar" text="1" textAlignment="CENTER" textFill="#e8175d">
                <font>
                   <Font name="Digital-7" size="150.0" />
                </font>
@@ -95,21 +63,21 @@
       </VBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="327.0" prefWidth="900.0" styleClass="text-placar" text="Time b" textAlignment="CENTER" textFill="#e8175d">
+            <Label fx:id="lblTimeB" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="327.0" prefWidth="900.0" styleClass="text-placar" text="Time b" textAlignment="CENTER" textFill="#e8175d">
                <font>
                   <Font name="Digital-7" size="100.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="204.0" prefWidth="900.0" styleClass="text-placar" text="Time a" textAlignment="CENTER" textFill="#e8175d" GridPane.columnIndex="3" GridPane.rowIndex="4">
+      <Label fx:id="lblTimeA" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="204.0" prefWidth="900.0" styleClass="text-placar" text="Time a" textAlignment="CENTER" textFill="#e8175d" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <font>
             <Font name="Digital-7" size="100.0" />
          </font>
       </Label>
       <HBox prefHeight="266.0" prefWidth="1284.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="140.0" prefWidth="900.0" styleClass="text-placar-destaque" text="00" textAlignment="CENTER" textFill="#e8175d">
+            <Label fx:id="lblPontosA" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="140.0" prefWidth="900.0" styleClass="text-placar-destaque" text="00" textAlignment="CENTER" textFill="#e8175d">
                <font>
                   <Font name="Digital-7" size="100.0" />
                </font>
@@ -119,14 +87,14 @@
                   <Font name="Digital-7" size="100.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="140.0" prefWidth="900.0" styleClass="text-placar-destaque" text="00" textAlignment="CENTER" textFill="#e8175d">
+            <Label fx:id="lblPontosB" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="140.0" prefWidth="900.0" styleClass="text-placar-destaque" text="00" textAlignment="CENTER" textFill="#e8175d">
                <font>
                   <Font name="Digital-7" size="100.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="271.0" prefWidth="1237.0" text="00 : 00" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Label fx:id="lblTempoTotal" alignment="CENTER" contentDisplay="CENTER" prefHeight="271.0" prefWidth="1237.0" text="00 : 00" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font name="Digital-7" size="100.0" />
          </font>

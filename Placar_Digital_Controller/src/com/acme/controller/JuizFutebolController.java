@@ -112,23 +112,8 @@ public class JuizFutebolController extends com.acme.commons.Observer {
             lblGolsB.setText(String.valueOf(Client.getJogo().getPontosB()));
             lblProrrogacao.setText(Utils.formatSecondsToSTring(Client.getJogo().getTempoProrrogacacao()));
             lblTempoDecorrido.setText(Utils.formatSecondsToSTring(Client.getJogo().getTempoDecorrido()));
-            verificarFinal();
+            Utils.verificarFinal();
         });
-    }
-
-    public void verificarFinal() {
-        if (Client.getJogo().isTerminada()) {
-            String msg = "";
-            if (Client.getJogo().getPontosA() == Client.getJogo().getPontosB()) {
-                msg = "Empatou !!! ";
-            } else if (Client.getJogo().getPontosA() > Client.getJogo().getPontosB()) {
-                msg = "O time " + Client.getJogo().getTimeA() + " foi o ganhador!!";
-            } else if (Client.getJogo().getPontosA() < Client.getJogo().getPontosB()) {
-                msg = "O time " + Client.getJogo().getTimeB() + " foi o ganhador!!";
-            }
-            JOptionPane.showMessageDialog(null, msg);
-            System.exit(0);
-        }
     }
 
     @Override

@@ -83,4 +83,19 @@ public class Utils {
     public static String metodoBackEncoder(String acao) {
         return acao + "\n";
     }
+
+    public static void verificarFinal() {
+        if (Client.getJogo().isTerminada()) {
+            String msg = "";
+            if (Client.getJogo().getPontosA() == Client.getJogo().getPontosB()) {
+                msg = "Empatou !!! ";
+            } else if (Client.getJogo().getPontosA() > Client.getJogo().getPontosB()) {
+                msg = "O time " + Client.getJogo().getTimeA() + " foi o ganhador!!";
+            } else if (Client.getJogo().getPontosA() < Client.getJogo().getPontosB()) {
+                msg = "O time " + Client.getJogo().getTimeB() + " foi o ganhador!!";
+            }
+            JOptionPane.showMessageDialog(null, msg);
+            System.exit(0);
+        }
+    }
 }

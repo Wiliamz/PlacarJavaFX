@@ -32,6 +32,7 @@ public class JogoDto implements Serializable {
     private int tempoEstimado;
     private int tempoDecorrido;
     private int tempoProrrogacacao;
+    private int tempoBola;
     private boolean pausado;
     private boolean terminada;
     private boolean jogando;
@@ -72,6 +73,11 @@ public class JogoDto implements Serializable {
         this.pontosA += 1;
         notifyAllObservers();
     }
+    
+    public void addPontosA(int qt) {
+        this.pontosA += qt;
+        notifyAllObservers();
+    }
 
     public int getPontosB() {
         return pontosB;
@@ -84,6 +90,11 @@ public class JogoDto implements Serializable {
 
     public void addPontosB() {
         this.pontosB += 1;
+        notifyAllObservers();
+    }
+
+    public void addPontosB(int qt) {
+        this.pontosB += qt;
         notifyAllObservers();
     }
 
@@ -140,6 +151,14 @@ public class JogoDto implements Serializable {
     public void setTempoProrrogacacao(int tempoProrrogacacao) {
         this.tempoProrrogacacao = tempoProrrogacacao;
         notifyAllObservers();
+    }
+
+    public int getTempoBola() {
+        return tempoBola;
+    }
+
+    public void setTempoBola(int tempoBola) {
+        this.tempoBola = tempoBola;
     }
 
     public boolean isPausado() {
