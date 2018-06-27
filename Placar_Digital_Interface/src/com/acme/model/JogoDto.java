@@ -59,12 +59,11 @@ public class JogoDto implements Serializable {
 
     public void setPontosA(int pontosA) {
         this.pontosA = pontosA;
-        
+
     }
 
     public void addPontosA() {
         this.pontosA += 1;
-        
     }
 
     public int getPontosB() {
@@ -73,7 +72,18 @@ public class JogoDto implements Serializable {
 
     public void setPontosB(int pontosB) {
         this.pontosB = pontosB;
-        
+    }
+
+    public void addPontosB() {
+        this.pontosB += 1;
+    }
+
+    public void removePontosA() {
+        this.pontosA -= 1;
+    }
+
+    public void removePontosB() {
+        this.pontosB -= 1;
     }
 
     public int getFaltasA() {
@@ -82,7 +92,7 @@ public class JogoDto implements Serializable {
 
     public void setFaltasA(int faltasA) {
         this.faltasA = faltasA;
-        
+
     }
 
     public int getFaltasB() {
@@ -91,7 +101,7 @@ public class JogoDto implements Serializable {
 
     public void setFaltasB(int faltasB) {
         this.faltasB = faltasB;
-        
+
     }
 
     public int getNumJogadoresA() {
@@ -100,7 +110,7 @@ public class JogoDto implements Serializable {
 
     public void setNumJogadoresA(int numJogadoresA) {
         this.numJogadoresA = numJogadoresA;
-        
+
     }
 
     public int getNumJogadoresB() {
@@ -109,7 +119,7 @@ public class JogoDto implements Serializable {
 
     public void setNumJogadoresB(int numJogadoresB) {
         this.numJogadoresB = numJogadoresB;
-        
+
     }
 
     public int getTempoProrrogacacao() {
@@ -118,7 +128,7 @@ public class JogoDto implements Serializable {
 
     public void setTempoProrrogacacao(int tempoProrrogacacao) {
         this.tempoProrrogacacao = tempoProrrogacacao;
-        
+
     }
 
     public boolean isPausado() {
@@ -127,7 +137,7 @@ public class JogoDto implements Serializable {
 
     public void setPausado(boolean pausado) {
         this.pausado = pausado;
-        
+
     }
 
     public boolean isTerminada() {
@@ -136,16 +146,16 @@ public class JogoDto implements Serializable {
 
     public void setTerminada(boolean terminada) {
         this.terminada = terminada;
-        
+
     }
-    
+
     public boolean isJogando() {
         return jogando;
     }
 
     public void setJogando(boolean jogando) {
         this.jogando = jogando;
-        
+
     }
 
     public String getTimeA() {
@@ -154,7 +164,7 @@ public class JogoDto implements Serializable {
 
     public void setTimeA(String timeA) {
         this.timeA = timeA;
-        
+
     }
 
     public String getTimeB() {
@@ -163,7 +173,7 @@ public class JogoDto implements Serializable {
 
     public void setTimeB(String timeB) {
         this.timeB = timeB;
-        
+
     }
 
     public String getMessage() {
@@ -221,8 +231,6 @@ public class JogoDto implements Serializable {
     public void setNumRepeticoesMarketing(int numRepeticoesMarketing) {
         this.numRepeticoesMarketing = numRepeticoesMarketing;
     }
-    
-    
 
     @Override
     public String toString() {

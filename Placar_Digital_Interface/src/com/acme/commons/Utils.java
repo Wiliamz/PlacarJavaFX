@@ -47,6 +47,14 @@ public class Utils {
         } else {
             if (obj.equals(Acoes.ADD_PONTOS_A.name())) {
                 Server.addPontosA();
+            } else if (obj.equals(Acoes.ADD_PONTOS_B.name())) {
+                Server.addPontosB();
+            } else if (obj.equals(Acoes.REMOVE_PONTOS_A.name())) {
+                Server.removePontosA();
+            } else if (obj.equals(Acoes.REMOVE_PONTOS_B.name())) {
+                Server.removePontosB();
+            } else if (obj.equals(Acoes.PLAY.name())) {
+                Server.continueGame();
             } else if (obj.equals(Acoes.PAUSE.name())) {
                 Server.pauseGame();
             } else if (obj.equals(Acoes.INICIAR_JOGO.name())) {
