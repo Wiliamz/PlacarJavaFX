@@ -67,7 +67,7 @@ public class Client {
                 }
             }
 //            }
-            System.out.println("mensageeeeeeem " + msg);
+//            System.out.println("mensageeeeeeem " + msg);
         }
     }
 
@@ -98,8 +98,14 @@ public class Client {
                         Timer timer = new Timer();
                         TimerTask task = new TimerTask() {
                             public void run() {
-                                if (Client.jogo.getTempoDecorrido() < Client.jogo.getTempoEstimado() && !Client.jogo.isPausado()) {
+                                System.out.println("Client.jogo.getTempoEstimado(" + Client.jogo.getTempoEstimado());
+                                if (Client.jogo.getTempoDecorrido() < Client.jogo.getTempoEstimado() && !Client.jogo.isPausado() && !Client.jogo.isTerminada()) {
                                     Client.jogo.setTempoDecorrido(Client.jogo.getTempoDecorrido() + 1);
+                                    if (Client.jogo.getTempoDecorrido() == Client.jogo.getTempoEstimado()) {
+                                        timer.cancel();
+                                        Client.endGame();
+                                        Client.jogo.setTerminada(true);
+                                    }
                                 } else {
                                     timer.cancel();
                                 }
@@ -110,7 +116,10 @@ public class Client {
                 });
             }
         }.start();
+    }
 
+    public static void addProrrogacao(String tempo) {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.PRORROGACAO + ";" + Utils.tempoConverter(tempo)));
     }
 
     public static void addPontoA() {
@@ -122,15 +131,15 @@ public class Client {
     }
 
     public static void removerPontoA() {
-        if (Client.getJogo().getPontosA() > 0) {
-            Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_A));
-        }
+//        if (Client.getJogo().getPontosA() > 0) {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_A));
+//        }
     }
 
     public static void removerPontoB() {
-        if (Client.getJogo().getPontosB() > 0) {
-            Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_B));
-        }
+//        if (Client.getJogo().getPontosB() > 0) {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_B));
+//        }
     }
 
     public static void pausarJogo() {
@@ -141,10 +150,12 @@ public class Client {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.PLAY));
     }
 
+    public static void endGame() {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.STOP));
+    }
+
     public static void atualizarJogo(String acao, String valor) {
-        System.out.println("aoa" + acao);
         if (valor.indexOf(";") > -1) {
-            System.out.println("iaiaiaiaiaiaiiao");
             String[] splittedValue = valor.split(";");
             if (acao.equals(Acoes.INICIAR_JOGO.name())) {
                 JogoDto j = new JogoDto();
@@ -172,8 +183,11 @@ public class Client {
                 Client.jogo.removePontosA();
             } else if (acao.equals(Acoes.REMOVE_PONTOS_B.name())) {
                 Client.jogo.removePontosB();
-            } else if (acao.equals(Acoes.INICIAR_JOGO.name())) {
-                Client.jogo.setJogando(true);
+            } else if (acao.equals(Acoes.PRORROGACAO.name())) {
+                Client.jogo.setTempoProrrogacacao(Integer.parseInt(valor));
+                Client.jogo.setTempoEstimado(Client.jogo.getTempoEstimado() + Integer.parseInt(valor));
+            } else if (acao.equals(Acoes.STOP.name())) {
+                Client.jogo.setTerminada(true);
             }
         }
         System.out.println("ACAO : " + acao + "   ------ valor : " + valor);

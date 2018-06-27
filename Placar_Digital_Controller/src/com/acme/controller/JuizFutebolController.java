@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -25,7 +26,6 @@ import javafx.stage.Stage;
  */
 public class JuizFutebolController extends com.acme.commons.Observer {
 
-//    private Client client;
     @FXML
     private Label lblGolsA;
     @FXML
@@ -47,23 +47,11 @@ public class JuizFutebolController extends com.acme.commons.Observer {
     @FXML
     private JFXButton btnRemoveGolA;
     @FXML
-    private JFXButton btnAddFaltaA;
-    @FXML
-    private JFXButton btnRemoveFaltaA;
-    @FXML
-    private JFXButton btnKickPlayerA;
-    @FXML
     private Label labelJogadoresA;
     @FXML
     private JFXButton btnAddGolB;
     @FXML
     private JFXButton btnRemoveGolB;
-    @FXML
-    private JFXButton btnAddFaltaB;
-    @FXML
-    private JFXButton btnRemoveFaltaB;
-    @FXML
-    private JFXButton btnKickPlayerB;
     @FXML
     private Label labelJogadoresB;
 
@@ -82,10 +70,12 @@ public class JuizFutebolController extends com.acme.commons.Observer {
 
     @FXML
     private void handlerAddProrrogacao(ActionEvent event) {
+        Client.addProrrogacao(tfAddProrrogacao.getText().replace(":", "-"));
     }
 
     @FXML
     private void handlerEndGame(ActionEvent event) {
+        Client.endGame();
     }
 
     @FXML
@@ -102,35 +92,10 @@ public class JuizFutebolController extends com.acme.commons.Observer {
     private void handlerRemoveGolA(ActionEvent event) {
         Client.removerPontoA();
     }
-    
+
     @FXML
     private void handlerRemoveGolB(ActionEvent event) {
         Client.removerPontoB();
-    }
-
-    @FXML
-    private void handlerAddFaltaA(ActionEvent event) {
-    }
-
-    @FXML
-    private void handlerRemoveFaltaA(ActionEvent event) {
-    }
-
-    @FXML
-    private void handlerKickA(ActionEvent event) {
-    }
-
-
-    @FXML
-    private void handlerAddFaltaB(ActionEvent event) {
-    }
-
-    @FXML
-    private void handlerRemoveFaltaB(ActionEvent event) {
-    }
-
-    @FXML
-    private void handlerKickB(ActionEvent event) {
     }
 
     @Override
@@ -139,23 +104,31 @@ public class JuizFutebolController extends com.acme.commons.Observer {
 
     public JuizFutebolController() {
         Client.getJogo().attach(this);
-//        if (Client.getJogo().isPausado()) {
-//            Image image = new Image(getClass().getResourceAsStream("../resources/icons/play.png"));
-//            btnPausarPartida.setGraphic(new ImageView(image));
-//            Client.continuarJogo();
-//        } else {
-//            Image image = new Image(getClass().getResourceAsStream("../resources/icons/pause.png"));
-//            btnPausarPartida.setGraphic(new ImageView(image));
-//            Client.pausarJogo();
-//        }
     }
 
     public void atualizarTela() {
         Platform.runLater(() -> {
             lblGolsA.setText(String.valueOf(Client.getJogo().getPontosA()));
             lblGolsB.setText(String.valueOf(Client.getJogo().getPontosB()));
+            lblProrrogacao.setText(Utils.formatSecondsToSTring(Client.getJogo().getTempoProrrogacacao()));
             lblTempoDecorrido.setText(Utils.formatSecondsToSTring(Client.getJogo().getTempoDecorrido()));
+            verificarFinal();
         });
+    }
+
+    public void verificarFinal() {
+        if (Client.getJogo().isTerminada()) {
+            String msg = "";
+            if (Client.getJogo().getPontosA() == Client.getJogo().getPontosB()) {
+                msg = "Empatou !!! ";
+            } else if (Client.getJogo().getPontosA() > Client.getJogo().getPontosB()) {
+                msg = "O time " + Client.getJogo().getTimeA() + " foi o ganhador!!";
+            } else if (Client.getJogo().getPontosA() < Client.getJogo().getPontosB()) {
+                msg = "O time " + Client.getJogo().getTimeB() + " foi o ganhador!!";
+            }
+            JOptionPane.showMessageDialog(null, msg);
+            System.exit(0);
+        }
     }
 
     @Override

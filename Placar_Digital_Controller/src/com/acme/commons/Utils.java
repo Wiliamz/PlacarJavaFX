@@ -58,6 +58,9 @@ public class Utils {
 
     public static String formatSecondsToSTring(int seconds) {
         String valor = "";
+        if (seconds == 0) {
+            return "00:00";
+        }
         int minutos = seconds / 60;
         int segundos = seconds % 60;
         if (minutos > 0) {

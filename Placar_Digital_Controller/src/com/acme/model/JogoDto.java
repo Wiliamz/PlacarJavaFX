@@ -29,6 +29,8 @@ public class JogoDto implements Serializable {
     private int faltasB;
     private int numJogadoresA;
     private int numJogadoresB;
+    private int tempoEstimado;
+    private int tempoDecorrido;
     private int tempoProrrogacacao;
     private boolean pausado;
     private boolean terminada;
@@ -36,8 +38,6 @@ public class JogoDto implements Serializable {
     private String timeA;
     private String timeB;
     private String tipoJogo;
-    private int tempoEstimado;
-    private int tempoDecorrido;
     private String base64Image;
     private String textoMarketing;
     private int numRepeticoesMarketing;

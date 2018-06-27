@@ -207,7 +207,7 @@ public class ADMStartController extends Observer implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         loadTeams();
         loadPlayers();
-        JfxTfTempo.setText("05-00");
+        JfxTfTempo.setText("02:00");
         if (JfxCbTimeA.getItems().size() > 0) {
             JfxCbTimeA.setValue(JfxCbTimeA.getItems().get(0));
         }
@@ -219,7 +219,8 @@ public class ADMStartController extends Observer implements Initializable {
     @FXML
     private void handleStartGame(ActionEvent event) {
         JFXRadioButton tipoJogo = (JFXRadioButton) jfxrbBasquete.getToggleGroup().getSelectedToggle();
-        Client.startGame(tipoJogo.getText(), JfxTfTempo.getText(), JfxCbTimeA.getValue().getNome(), JfxCbTimeB.getValue().getNome());
+        System.out.println("STRINGGGG" + JfxTfTempo.getText().replace(":", "-"));
+        Client.startGame(tipoJogo.getText(), JfxTfTempo.getText().replace(":", "-"), JfxCbTimeA.getValue().getNome(), JfxCbTimeB.getValue().getNome());
 
     }
 
