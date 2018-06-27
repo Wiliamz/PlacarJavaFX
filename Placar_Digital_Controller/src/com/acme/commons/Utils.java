@@ -51,14 +51,22 @@ public class Utils {
         return null;
     }
 
-    public static HashMap<Acoes, String> metodoFrontDecoder(String acaoEncoded) {
+    public static int tempoConverter(String tempo) {
+        String[] splittedTime = tempo.split("-");
+        return (Integer.parseInt(splittedTime[0]) * 60) + Integer.parseInt(splittedTime[1]);
+
+    }
+
+    public static String[] metodoFrontDecoder(String acaoEncoded) {
         String[] splitted = acaoEncoded.split(":");
-        HashMap<Acoes, String> hash = new HashMap<>();
-        hash.put(Acoes.valueOf(splitted[0]), splitted[1]);
-        return hash;
+        return splitted;
     }
 
     public static String metodoBackEncoder(Acoes acao) {
         return acao.name() + "\n";
+    }
+
+    public static String metodoBackEncoder(String acao) {
+        return acao + "\n";
     }
 }

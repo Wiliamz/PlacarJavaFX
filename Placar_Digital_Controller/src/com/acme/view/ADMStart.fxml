@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="600.0" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.ADMStartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="600.0" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.ADMStartController">
    <children>
       <GridPane prefHeight="432.0" prefWidth="600.0" styleClass="bg-container">
          <columnConstraints>
@@ -83,7 +83,7 @@
             <JFXButton fx:id="JfxBEscalarTimes" alignment="CENTER" contentDisplay="CENTER" onAction="#handleEscalarTimeAction" prefHeight="116.0" prefWidth="376.0" styleClass="btn-default" text="Escalar Times" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Label styleClass="text-default-low" text="X" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" styleClass="text-default-low" text="Tempo Estimado para a Partida" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-            <JFXButton fx:id="JfxBStartGame" maxHeight="60.0" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="600.0" styleClass="btn-destaque" text="Iniciar Partida" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
+            <JFXButton fx:id="JfxBStartGame" maxHeight="60.0" maxWidth="1.7976931348623157E308" onAction="#handleStartGame" prefHeight="60.0" prefWidth="600.0" styleClass="btn-destaque" text="Iniciar Partida" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="677.0" styleClass="title" text="Administrador" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
          </children>
       </GridPane>

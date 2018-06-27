@@ -14,8 +14,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
@@ -60,7 +58,6 @@ public class LoginController implements Initializable {
         fazerLogin();
     }
 
-    
     public void fazerLogin() {
         System.out.println("IPPPPP" + txtIp.getText());
         Platform.runLater(new Runnable() {
@@ -70,7 +67,6 @@ public class LoginController implements Initializable {
                     try {
                         Usuario u = Utils.fazerLogin(login.getText(), Utils.gerarMd5(senha.getText()));
                         if (u != null) {
-
                             Task task = new Task<Void>() {
                                 @Override
                                 public Void call() {
@@ -90,16 +86,21 @@ public class LoginController implements Initializable {
                             new Thread(task).start();
 
                             FXMLLoader fxmlLoader = null;
-                            if (u.getTipo().equals(TipoUsuario.ADMIN)) {
-                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/ADMStart.fxml"));
-                            } else if (u.getTipo().equals(TipoUsuario.MARKETING)) {
-                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Marketing.fxml"));
-                            } else if (u.getTipo().equals(TipoUsuario.JUIZ)) {
-                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/JuizFutebol.fxml"));
-                            }
-                            Parent root1 = (Parent) fxmlLoader.load();
                             Stage stage = new Stage();
                             stage.setTitle("Placar Eletronico");
+                            if (u.getTipo().equals(TipoUsuario.ADMIN)) {
+                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/ADMStart.fxml"));
+                                fxmlLoader.setControllerFactory(c -> {
+                                    return new ADMStartController(stage);
+                                });
+                            } else {
+                                fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Loading.fxml"));
+                                fxmlLoader.setControllerFactory(c -> {
+                                    return new LoadingController(u, stage);
+                                });
+                            }
+                            Parent root1 = (Parent) fxmlLoader.load();
+
                             stage.setScene(new Scene(root1));
                             stage.show();
                             MainApp.stage.close();
@@ -130,16 +131,21 @@ public class LoginController implements Initializable {
                         }
                     };
                     new Thread(task).start();
-
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/PlacarFutebol.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("Placar Eletronico");
+                    Usuario u = new Usuario();
+                    u.setTipo(TipoUsuario.COMUM);
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Loading.fxml"));
+                    fxmlLoader.setControllerFactory(c -> {
+                        return new LoadingController(u, stage);
+                    });
                     Parent root1 = null;
                     try {
                         root1 = (Parent) fxmlLoader.load();
                     } catch (IOException ex) {
                         Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    Stage stage = new Stage();
-                    stage.setTitle("Placar Eletronico");
+
                     stage.setScene(new Scene(root1));
                     stage.show();
                     MainApp.stage.close();
@@ -147,13 +153,9 @@ public class LoginController implements Initializable {
             }
         });
     }
-     @Override
+
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        try {
-//            System.out.println("NetworkInterface.getNetworkInterfaces()" + InetAddress.getLocalHost());
-//        } catch (UnknownHostException ex) {
-//            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         try {
             txtIp.setText(InetAddress.getLocalHost().toString().split("/")[1]);
         } catch (UnknownHostException ex) {

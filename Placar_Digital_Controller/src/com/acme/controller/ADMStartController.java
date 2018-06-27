@@ -6,6 +6,9 @@
 package com.acme.controller;
 
 import com.acme.MainApp;
+import com.acme.commons.Client;
+import com.acme.commons.Observer;
+import com.acme.enums.TipoUsuario;
 import com.acme.model.JogadoresWrapper;
 import com.acme.model.TimeJogo;
 import com.acme.model.TimeJogoWrapper;
@@ -41,7 +44,9 @@ import javax.xml.bind.Unmarshaller;
  *
  * @author wiliam
  */
-public class ADMStartController implements Initializable {
+public class ADMStartController extends Observer implements Initializable {
+
+    static Stage stage;
 
     @FXML
     private JFXButton JfxBEditTimes;
@@ -65,6 +70,11 @@ public class ADMStartController implements Initializable {
     public Stage times;
     private static TimeJogoWrapper tw = new TimeJogoWrapper();
     private static JogadoresWrapper pw = new JogadoresWrapper();
+
+    public ADMStartController(Stage stage) {
+        this.stage = stage;
+        Client.getJogo().attach(this);
+    }
 
     @FXML
     private void handleEscalarTimeAction(ActionEvent event) {
@@ -196,5 +206,49 @@ public class ADMStartController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         loadTeams();
         loadPlayers();
+        JfxTfTempo.setText("05-00");
     }
+
+    @FXML
+    private void handleStartGame(ActionEvent event) {
+        JFXRadioButton tipoJogo = (JFXRadioButton) jfxrbBasquete.getToggleGroup().getSelectedToggle();
+        Client.startGame(tipoJogo.getText(), JfxTfTempo.getText(), JfxCbTimeA.getValue().getNome(), JfxCbTimeB.getValue().getNome());
+
+    }
+
+    @Override
+    public void update() {
+        Observer obs = this;
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                if (Client.getJogo().isJogando()) {
+                    FXMLLoader fxmlLoader = null;
+                    if (Client.getJogo().getTipoJogo().equalsIgnoreCase("Basquete")) {
+                        fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/JuizBasquete.fxml"));
+                    } else {
+                        fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/JuizFutebol.fxml"));
+                    }
+                    Parent root1 = null;
+                    try {
+                        root1 = (Parent) fxmlLoader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Stage stage = new Stage();
+                    stage.setTitle("Placar Eletronico");
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                    Client.getJogo().removeObserver(obs);
+                    ADMStartController.stage.close();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

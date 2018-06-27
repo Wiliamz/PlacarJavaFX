@@ -8,9 +8,6 @@ package com.acme.controller;
 import com.acme.commons.Client;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.util.Observable;
-import java.util.Observer;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -21,10 +18,9 @@ import javafx.stage.Stage;
  *
  * @author Gabriel Cardoso
  */
-public class JuizFutebolController extends Application implements Observer {
+public class JuizFutebolController extends com.acme.commons.Observer {
 
 //    private Client client;
-    
     @FXML
     private Label lblGolsA;
     @FXML
@@ -65,11 +61,10 @@ public class JuizFutebolController extends Application implements Observer {
     private JFXButton btnKickPlayerB;
     @FXML
     private Label labelJogadoresB;
-  
 
     @FXML
     private void handlerPauseGame(ActionEvent event) {
-        Client.maisPonto();
+        Client.pausarJogo();
     }
 
     @FXML
@@ -121,13 +116,16 @@ public class JuizFutebolController extends Application implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        System.out.println("ATUALIZOU CARAI");
+    public void start(Stage primaryStage) throws Exception {
+    }
+
+    public JuizFutebolController() {
+        Client.getJogo().attach(this);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Client.getJogo().addObserver(this);
+    public void update() {
+        System.out.println("Hex String: " + Client.getJogo().isPausado());
     }
-    
+
 }
