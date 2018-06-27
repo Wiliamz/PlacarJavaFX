@@ -40,8 +40,11 @@ public class Utils {
     public static void callServerMethod(String obj) {
         if (obj.indexOf(";") > -1) {
             String[] splitted = obj.split(";");
+            System.out.println("splitted[0].equals(Acoes.PRORROGACAO.name())" + splitted[0].equals(Acoes.PRORROGACAO.name()));
             if (splitted[0].equals(Acoes.INICIAR_JOGO.name())) {
                 Server.startGame(splitted[1], splitted[2], splitted[3], splitted[4]);
+            } else if (splitted[0].equals(Acoes.PRORROGACAO.name())) {
+                Server.addProrrogacao(Integer.parseInt(splitted[1]));
             }
             System.out.println("OBJECTO" + obj);
         } else {
@@ -57,8 +60,8 @@ public class Utils {
                 Server.continueGame();
             } else if (obj.equals(Acoes.PAUSE.name())) {
                 Server.pauseGame();
-            } else if (obj.equals(Acoes.INICIAR_JOGO.name())) {
-//                Server.startGame(1);
+            } else if (obj.equals(Acoes.STOP.name())) {
+                Server.endGame();
             }
         }
     }

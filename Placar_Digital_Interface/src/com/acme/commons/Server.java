@@ -84,7 +84,6 @@ public final class Server {
 //        };
 //        timer.schedule(task, 1000, 1000);
 //    }
-
     public static void startGame(String tipoJogo, String tempoJogo, String timeA, String timeB) {
         Server.jogo.setJogando(true);
         Server.jogo.setTipoJogo(TipoJogo.valueOf(tipoJogo.toUpperCase()));
@@ -111,16 +110,16 @@ public final class Server {
             c.sendMessage(Acoes.ADD_PONTOS_B.name() + ":" + Server.jogo.getPontosB());
         }
     }
-    
+
     public static void removePontosA() {
-        Server.jogo.addPontosA();
+        Server.jogo.removePontosA();
         for (ClientHandler c : Server.getClients()) {
             c.sendMessage(Acoes.REMOVE_PONTOS_A.name() + ":" + Server.jogo.getPontosA());
         }
     }
 
     public static void removePontosB() {
-        Server.jogo.addPontosB();
+        Server.jogo.removePontosB();
         for (ClientHandler c : Server.getClients()) {
             c.sendMessage(Acoes.REMOVE_PONTOS_B.name() + ":" + Server.jogo.getPontosB());
         }
@@ -132,12 +131,26 @@ public final class Server {
             c.sendMessage(Acoes.PAUSE.name() + ":" + Server.jogo.isPausado());
         }
     }
-    
+
     public static void continueGame() {
         Server.jogo.setPausado(false);
 //        Server.atualizarTempoDecorrido();
         for (ClientHandler c : Server.getClients()) {
             c.sendMessage(Acoes.PLAY.name() + ":" + Server.jogo.isPausado());
+        }
+    }
+
+    public static void addProrrogacao(int qtd) {
+        Server.jogo.setTempoProrrogacacao(qtd);
+        for (ClientHandler c : Server.getClients()) {
+            c.sendMessage(Acoes.PRORROGACAO.name() + ":" + Server.jogo.getTempoProrrogacacao());
+        }
+    }
+
+    public static void endGame() {
+        Server.jogo.setTerminada(true);
+        for (ClientHandler c : Server.getClients()) {
+            c.sendMessage(Acoes.STOP.name() + ":" + true);
         }
     }
 }
