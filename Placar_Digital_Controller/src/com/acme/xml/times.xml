@@ -9,6 +9,10 @@
             <nome>Wiliam</nome>
             <time>0</time>
         </jogadores>
+        <jogadores>
+            <nome>Rafael</nome>
+            <time>0</time>
+        </jogadores>
         <nome>Grêmio</nome>
         <qtdPerdeu>0</qtdPerdeu>
         <qtdVenceu>0</qtdVenceu>

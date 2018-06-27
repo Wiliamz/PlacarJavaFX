@@ -71,7 +71,7 @@ public class TimeJogo {
     public void addJogador(Jogador j) {
         int opcao = 0;
         for (int i = 0; i > jogadores.size(); i++) {
-            if (j.getNome().equalsIgnoreCase(nome) || j.getTime() == this.jogadores.get(0).getTime()) {
+            if (j.getNome().equalsIgnoreCase(nome) || j.getTime() == this.jogadores.get(i).getTime()) {
                 while (opcao != 2) {
 
                     Object[] options = {"Quero gravar mesmo assim", "Vou mudar o nome", "Cancelar"};

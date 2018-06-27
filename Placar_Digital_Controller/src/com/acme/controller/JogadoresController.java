@@ -58,7 +58,7 @@ public class JogadoresController implements Initializable {
     /**
      * Initializes the controller class.
      *
-     * @param url
+     * @param url 
      * @param rb
      */
     @Override
@@ -71,12 +71,12 @@ public class JogadoresController implements Initializable {
     private void handlejfxbtnAddJogadorAction(ActionEvent event) {
 
         try {
-            
+            loadTeams();
             nome = jfxtfJogador.getText();
             player.setNome(nome);
             player.setTime(jfxcbTimes.getSelectionModel().getSelectedItem().getId());
             pw.getJogadores().add(player);
-            tw.getTimes().get(player.getTime()).addJogador(player);
+            tw.getTimes().get(player.getTime()).getJogadores().add(player);
             player = new Jogador();
 
             try {
