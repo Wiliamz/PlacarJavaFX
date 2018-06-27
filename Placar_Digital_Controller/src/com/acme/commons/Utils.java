@@ -54,7 +54,18 @@ public class Utils {
     public static int tempoConverter(String tempo) {
         String[] splittedTime = tempo.split("-");
         return (Integer.parseInt(splittedTime[0]) * 60) + Integer.parseInt(splittedTime[1]);
+    }
 
+    public static String formatSecondsToSTring(int seconds) {
+        String valor = "";
+        int minutos = seconds / 60;
+        int segundos = seconds % 60;
+        if (minutos > 0) {
+            valor = (minutos > 9 ? String.valueOf(minutos) : "0" + minutos) + ":" + (segundos > 10 ? String.valueOf(segundos) : "0" + segundos);
+        } else {
+            valor = "00:" + segundos;
+        }
+        return valor;
     }
 
     public static String[] metodoFrontDecoder(String acaoEncoded) {

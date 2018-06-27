@@ -18,26 +18,29 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 
 /**
  *
  * @author Gabriel Cardoso
  */
 public class Client {
-    
+
     public static ObjectOutputStream dos;
     public static ObjectInputStream dis;
     public static OutputStreamWriter paraServer;
     public static InputStreamReader streamReader;
-    
+
     private static JogoDto jogo = new JogoDto();
-    
+
     public static JogoDto getJogo() {
         return jogo;
     }
-    
+
     public static void rodar(String host) throws IOException, ClassNotFoundException, UnknownHostException {
         // Ip do host ---- pegará por texto, por enquanto só teste
         InetAddress ip = InetAddress.getByName(host);
@@ -67,11 +70,11 @@ public class Client {
             System.out.println("mensageeeeeeem " + msg);
         }
     }
-    
+
     public static void bindToJogo(Observer observer) {
         Client.jogo.attach(observer);
     }
-    
+
     public static void enviarMsg(String obj) {
         try {
             Client.paraServer.write(obj);
@@ -80,21 +83,64 @@ public class Client {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void startGame(String tipoJogo, String tempoJogo, String timeA, String timeB) {
         String params = Acoes.INICIAR_JOGO.name() + ";" + tipoJogo + ";" + tempoJogo + ";" + timeA + ";" + timeB;
         Client.enviarMsg(Utils.metodoBackEncoder(params));
-        
     }
-    
-    public static void maisPonto() {
+
+    public static void startContadorTempo() {
+        new Thread() {
+            public void run() {
+                //Do some stuff in another thread
+                Platform.runLater(new Runnable() {
+                    public void run() {
+                        Timer timer = new Timer();
+                        TimerTask task = new TimerTask() {
+                            public void run() {
+                                if (Client.jogo.getTempoDecorrido() < Client.jogo.getTempoEstimado() && !Client.jogo.isPausado()) {
+                                    Client.jogo.setTempoDecorrido(Client.jogo.getTempoDecorrido() + 1);
+                                } else {
+                                    timer.cancel();
+                                }
+                            }
+                        };
+                        timer.schedule(task, 1000, 1000);
+                    }
+                });
+            }
+        }.start();
+
+    }
+
+    public static void addPontoA() {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.ADD_PONTOS_A));
     }
-    
+
+    public static void addPontoB() {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.ADD_PONTOS_B));
+    }
+
+    public static void removerPontoA() {
+        if (Client.getJogo().getPontosA() > 0) {
+            Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_A));
+        }
+    }
+
+    public static void removerPontoB() {
+        if (Client.getJogo().getPontosB() > 0) {
+            Client.enviarMsg(Utils.metodoBackEncoder(Acoes.REMOVE_PONTOS_B));
+        }
+    }
+
     public static void pausarJogo() {
         Client.enviarMsg(Utils.metodoBackEncoder(Acoes.PAUSE));
     }
-    
+
+    public static void continuarJogo() {
+        Client.enviarMsg(Utils.metodoBackEncoder(Acoes.PLAY));
+    }
+
     public static void atualizarJogo(String acao, String valor) {
         System.out.println("aoa" + acao);
         if (valor.indexOf(";") > -1) {
@@ -109,11 +155,23 @@ public class Client {
                 j.attach(Client.jogo.getObservers().get(0));
                 Client.jogo = j;
                 Client.jogo.setJogando(true);
+                startContadorTempo();
             }
-            
+
         } else {
-            if (acao.equals(Acoes.PAUSE.name())) {
+            if (acao.equals(Acoes.PLAY.name())) {
+                Client.jogo.setPausado(false);
+                startContadorTempo();
+            } else if (acao.equals(Acoes.PAUSE.name())) {
                 Client.jogo.setPausado(true);
+            } else if (acao.equals(Acoes.ADD_PONTOS_A.name())) {
+                Client.jogo.addPontosA();
+            } else if (acao.equals(Acoes.ADD_PONTOS_B.name())) {
+                Client.jogo.addPontosB();
+            } else if (acao.equals(Acoes.REMOVE_PONTOS_A.name())) {
+                Client.jogo.removePontosA();
+            } else if (acao.equals(Acoes.REMOVE_PONTOS_B.name())) {
+                Client.jogo.removePontosB();
             } else if (acao.equals(Acoes.INICIAR_JOGO.name())) {
                 Client.jogo.setJogando(true);
             }

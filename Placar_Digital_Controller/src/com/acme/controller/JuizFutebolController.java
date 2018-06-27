@@ -6,11 +6,16 @@
 package com.acme.controller;
 
 import com.acme.commons.Client;
+import com.acme.commons.Utils;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -64,7 +69,15 @@ public class JuizFutebolController extends com.acme.commons.Observer {
 
     @FXML
     private void handlerPauseGame(ActionEvent event) {
-        Client.pausarJogo();
+        if (Client.getJogo().isPausado()) {
+//            Image image = new Image(getClass().getResourceAsStream("../resources/icons/play.png"));
+//            btnPausarPartida.setGraphic(new ImageView(image));
+            Client.continuarJogo();
+        } else {
+//            Image image = new Image(getClass().getResourceAsStream("../resources/icons/pause.png"));
+//            btnPausarPartida.setGraphic(new ImageView(image));
+            Client.pausarJogo();
+        }
     }
 
     @FXML
@@ -77,10 +90,22 @@ public class JuizFutebolController extends com.acme.commons.Observer {
 
     @FXML
     private void handlerAddGolA(ActionEvent event) {
+        Client.addPontoA();
+    }
+
+    @FXML
+    private void handlerAddGolB(ActionEvent event) {
+        Client.addPontoB();
     }
 
     @FXML
     private void handlerRemoveGolA(ActionEvent event) {
+        Client.removerPontoA();
+    }
+    
+    @FXML
+    private void handlerRemoveGolB(ActionEvent event) {
+        Client.removerPontoB();
     }
 
     @FXML
@@ -95,13 +120,6 @@ public class JuizFutebolController extends com.acme.commons.Observer {
     private void handlerKickA(ActionEvent event) {
     }
 
-    @FXML
-    private void handlerAddGolB(ActionEvent event) {
-    }
-
-    @FXML
-    private void handlerRemoveGolB(ActionEvent event) {
-    }
 
     @FXML
     private void handlerAddFaltaB(ActionEvent event) {
@@ -121,11 +139,28 @@ public class JuizFutebolController extends com.acme.commons.Observer {
 
     public JuizFutebolController() {
         Client.getJogo().attach(this);
+//        if (Client.getJogo().isPausado()) {
+//            Image image = new Image(getClass().getResourceAsStream("../resources/icons/play.png"));
+//            btnPausarPartida.setGraphic(new ImageView(image));
+//            Client.continuarJogo();
+//        } else {
+//            Image image = new Image(getClass().getResourceAsStream("../resources/icons/pause.png"));
+//            btnPausarPartida.setGraphic(new ImageView(image));
+//            Client.pausarJogo();
+//        }
+    }
+
+    public void atualizarTela() {
+        Platform.runLater(() -> {
+            lblGolsA.setText(String.valueOf(Client.getJogo().getPontosA()));
+            lblGolsB.setText(String.valueOf(Client.getJogo().getPontosB()));
+            lblTempoDecorrido.setText(Utils.formatSecondsToSTring(Client.getJogo().getTempoDecorrido()));
+        });
     }
 
     @Override
     public void update() {
-        System.out.println("Hex String: " + Client.getJogo().isPausado());
+        atualizarTela();
     }
 
 }

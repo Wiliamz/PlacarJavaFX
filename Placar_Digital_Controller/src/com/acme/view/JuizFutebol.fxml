@@ -50,7 +50,7 @@
                   <Insets top="72.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblGolsA" alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Insets top="36.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00:00" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTempoDecorrido" alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00:00" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -88,7 +88,7 @@
                   <Insets top="72.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblGolsB" alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -105,7 +105,7 @@
                   <Insets top="36.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00:00" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblProrrogacao" alignment="CENTER" prefHeight="36.0" prefWidth="491.0" text="00:00" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="29.0" />
                </font>
@@ -171,7 +171,7 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
          <children>
-            <JFXButton fx:id="btnPauseGame" contentDisplay="RIGHT" onAction="#handlerPauseGame" prefHeight="36.0" prefWidth="170.0" text=" " textFill="WHITE">
+            <JFXButton fx:id="btnPausarPartida" contentDisplay="RIGHT" onAction="#handlerPauseGame" prefHeight="36.0" prefWidth="170.0" text=" " textFill="WHITE">
                <font>
                   <Font name="Digital-7" size="24.0" />
                </font>
@@ -283,7 +283,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </Pane>
-                  <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="40.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff; -fx-background-image: none;" styleClass="btnZerarCrono" text="+1" textFill="#e8175d">
+                  <JFXButton fx:id="btnAddGolB" alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="40.0" onAction="#handlerAddGolB" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff; -fx-background-image: none;" styleClass="btnZerarCrono" text="+1" textFill="#e8175d">
                      <font>
                         <Font name="Digital-7" size="18.0" />
                      </font>
@@ -404,7 +404,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </Pane>
-                  <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="40.0" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff; -fx-background-image: none;" styleClass="btnZerarCrono" text="+1" textFill="#e8175d">
+                  <JFXButton fx:id="btnAddGolA" alignment="CENTER" contentDisplay="RIGHT" maxHeight="36.0" maxWidth="1.7976931348623157E308" minHeight="36.0" minWidth="40.0" onAction="#handlerAddGolA" prefHeight="36.0" prefWidth="45.0" style="-fx-background-color: #ffffff; -fx-background-image: none;" styleClass="btnZerarCrono" text="+1" textFill="#e8175d">
                      <font>
                         <Font name="Digital-7" size="18.0" />
                      </font>

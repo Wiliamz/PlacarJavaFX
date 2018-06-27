@@ -82,6 +82,21 @@ public class JogoDto implements Serializable {
         notifyAllObservers();
     }
 
+    public void addPontosB() {
+        this.pontosB += 1;
+        notifyAllObservers();
+    }
+
+    public void removePontosA() {
+        this.pontosA -= 1;
+        notifyAllObservers();
+    }
+
+    public void removePontosB() {
+        this.pontosB -= 1;
+        notifyAllObservers();
+    }
+
     public int getFaltasA() {
         return faltasA;
     }
