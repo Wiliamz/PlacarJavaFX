@@ -192,3 +192,13 @@
     -fx-float: right;
     -fx-righ: 0;
 }
+
+.lbl-advertise {
+    -fx-font-family: "Digital-7";
+    -fx-text-fill: -fx-rosa;
+    -fx-font-size: 200;
+}
+
+.container-preview {
+    border: 2px solid #E8175D;
+}
