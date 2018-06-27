@@ -2,15 +2,63 @@
 <times>
     <times id="0">
         <jogadores>
+            <nome>Marcelo </nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Douglas</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Geromel</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Arthur</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Jael</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Ramiro</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Leonardo</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Bressan</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Kannemann</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Bruno</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Maicon</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>Everton</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
+            <nome>André</nome>
+            <time>0</time>
+        </jogadores>
+        <jogadores>
             <nome>Luan</nome>
             <time>0</time>
         </jogadores>
         <jogadores>
-            <nome>Wiliam</nome>
-            <time>0</time>
-        </jogadores>
-        <jogadores>
-            <nome>Rafael</nome>
+            <nome>Renato</nome>
             <time>0</time>
         </jogadores>
         <nome>Grêmio</nome>

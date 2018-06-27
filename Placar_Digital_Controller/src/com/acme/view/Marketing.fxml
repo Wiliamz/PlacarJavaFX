@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="bg-container" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.view.PlacarBasqueteController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="bg-container" stylesheets="@../resources/css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.acme.controller.MarketingController">
   <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
@@ -26,7 +26,8 @@
    <children>
       <Pane fx:id="panepreview" prefHeight="200.0" prefWidth="200.0" styleClass="container-preview" GridPane.columnSpan="3" GridPane.rowIndex="3">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" styleClass="bg-container" />
+            <ImageView fx:id="imagepreview" fitHeight="150.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" styleClass="bg-container" />
+            <Label layoutX="7.0" layoutY="6.0" prefHeight="17.0" prefWidth="12.0" styleClass="lbl-preview" text=" " />
          </children>
       </Pane>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="132.0" prefWidth="668.0" styleClass="title" text="Marketing" GridPane.columnSpan="3" />
@@ -38,19 +39,19 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXButton prefHeight="25.0" prefWidth="652.0" styleClass="btn-default">
+            <JFXButton maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="652.0" styleClass="btn-default" text="Enviar Texto">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXTextField alignment="CENTER" focusColor="#e8175d" promptText="Mostrar uma Imagem" styleClass="default-text-field" unFocusColor="#32292f">
+            <JFXButton fx:id="btnChoseFile" maxWidth="1.7976931348623157E308" onAction="#choseAd" prefHeight="25.0" prefWidth="652.0" styleClass="btn-default" text="Escolher Imagem">
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets top="50.0" />
                </VBox.margin>
-            </JFXTextField>
-            <JFXButton prefHeight="25.0" prefWidth="652.0" styleClass="btn-default">
+            </JFXButton>
+            <JFXButton maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="652.0" styleClass="btn-default" text="Enviar Imagem">
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </JFXButton>
          </children>

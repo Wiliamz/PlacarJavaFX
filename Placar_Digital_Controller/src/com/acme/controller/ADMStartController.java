@@ -5,10 +5,8 @@
  */
 package com.acme.controller;
 
-import com.acme.MainApp;
 import com.acme.commons.Client;
 import com.acme.commons.Observer;
-import com.acme.enums.TipoUsuario;
 import com.acme.model.JogadoresWrapper;
 import com.acme.model.TimeJogo;
 import com.acme.model.TimeJogoWrapper;
@@ -19,7 +17,6 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,9 +56,9 @@ public class ADMStartController extends Observer implements Initializable {
     @FXML
     private JFXButton JfxBStartGame;
     @FXML
-    private JFXRadioButton jfxrbBasquete;
+    public JFXRadioButton jfxrbBasquete;
     @FXML
-    private JFXRadioButton jfxrbFutebol;
+    public JFXRadioButton jfxrbFutebol;
     @FXML
     private JFXComboBox<TimeJogo> JfxCbTimeB;
     @FXML
@@ -79,21 +76,25 @@ public class ADMStartController extends Observer implements Initializable {
     @FXML
     private void handleEscalarTimeAction(ActionEvent event) {
         try {
+            TimesHandler.receberInstancia(this);
+
             FXMLLoader fxmlLoader = null;
             fxmlLoader = new FXMLLoader(getClass().getResource("/com/acme/view/Times.fxml"));
             Parent root1;
 
             root1 = (Parent) fxmlLoader.load();
 
-            Stage stage = new Stage();
-            stage.setTitle("Escalador de Times");
-            stage.setScene(new Scene(root1));
-            stage.show();
+            times = new Stage();
+            times.setTitle("Escalador de Times");
+            times.setScene(new Scene(root1));
+            times.show();
 
+            times.setOnCloseRequest(evento -> {
+                loadTeams();
+            });
         } catch (IOException ex) {
             Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @FXML

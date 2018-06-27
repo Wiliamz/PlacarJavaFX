@@ -48,6 +48,12 @@ public class JogadoresController implements Initializable {
     @FXML
     private JFXButton jfxbtnConcluido;
 
+    private static TimesHandler thand;
+
+    public static void receberInstancia(TimesHandler thandler) {
+        thand = thandler;
+    }
+
     Jogador player = new Jogador();
     JogadoresWrapper pw = new JogadoresWrapper();
     TimeJogoWrapper tw = new TimeJogoWrapper();
@@ -58,7 +64,7 @@ public class JogadoresController implements Initializable {
     /**
      * Initializes the controller class.
      *
-     * @param url 
+     * @param url
      * @param rb
      */
     @Override
@@ -70,42 +76,27 @@ public class JogadoresController implements Initializable {
     @FXML
     private void handlejfxbtnAddJogadorAction(ActionEvent event) {
 
-        try {
-            loadTeams();
-            nome = jfxtfJogador.getText();
+        loadTeams();
+        nome = jfxtfJogador.getText();
+        if (jfxtfJogador.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Falta alguma coisa!!", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
             player.setNome(nome);
             player.setTime(jfxcbTimes.getSelectionModel().getSelectedItem().getId());
             pw.getJogadores().add(player);
             tw.getTimes().get(player.getTime()).getJogadores().add(player);
             player = new Jogador();
-
-            try {
-
-                JAXBContext jaxbContextTimes = JAXBContext.newInstance(TimeJogoWrapper.class);
-                Marshaller jaxbMarshallerT = jaxbContextTimes.createMarshaller();
-                jaxbMarshallerT.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-                jaxbMarshallerT.marshal(tw, arqxml);
-
-                JAXBContext jaxbContextJogadores = JAXBContext.newInstance(JogadoresWrapper.class);
-                Marshaller jaxbMarshallerJ = jaxbContextJogadores.createMarshaller();
-                jaxbMarshallerJ.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-                jaxbMarshallerJ.marshal(pw, file);
-
-            } catch (JAXBException ex) {
-                Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            savePlayers();
+            saveTeams();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!!!!!");
-
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Falta alguma coisa!!", "ERRO", JOptionPane.WARNING_MESSAGE);
         }
     }
 
     @FXML
     private void handlejfxbtnCancelAction(ActionEvent event) {
-
+        thand.loadTeams();
+        thand.loadPlayers();
+        thand.jogadores.close();
     }
 
     @FXML
@@ -115,13 +106,14 @@ public class JogadoresController implements Initializable {
 
     @FXML
     private void handlejfxbtnConcluidoAction(ActionEvent event) {
-        loadTeams();
+        thand.loadTeams();
+        thand.loadPlayers();
+        thand.jogadores.close();
     }
 
     private void loadTeams() {
         Platform.runLater(() -> {
             try {
-
                 jfxcbTimes.getItems().clear();
                 JAXBContext context = JAXBContext.newInstance(TimeJogoWrapper.class);
                 Unmarshaller unm = context.createUnmarshaller();
@@ -138,7 +130,6 @@ public class JogadoresController implements Initializable {
                         return null;
                     }
                 });
-
             } catch (JAXBException ex) {
                 Logger.getLogger(ADMStartController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -146,14 +137,34 @@ public class JogadoresController implements Initializable {
     }
 
     private void loadPlayers() {
-
         try {
-
             JAXBContext context = JAXBContext.newInstance(JogadoresWrapper.class);
             Unmarshaller unm = context.createUnmarshaller();
             pw = (JogadoresWrapper) unm.unmarshal(file);
         } catch (JAXBException ex) {
             Logger.getLogger(JogadoresController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void savePlayers() {
+        try {
+            JAXBContext jaxbContextJogadores = JAXBContext.newInstance(JogadoresWrapper.class);
+            Marshaller jaxbMarshallerJ = jaxbContextJogadores.createMarshaller();
+            jaxbMarshallerJ.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            jaxbMarshallerJ.marshal(pw, file);
+        } catch (JAXBException ex) {
+            Logger.getLogger(JogadoresController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void saveTeams() {
+        try {
+            JAXBContext jaxbContextTimes = JAXBContext.newInstance(TimeJogoWrapper.class);
+            Marshaller jaxbMarshallerT = jaxbContextTimes.createMarshaller();
+            jaxbMarshallerT.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            jaxbMarshallerT.marshal(tw, arqxml);
+        } catch (JAXBException ex) {
+            Logger.getLogger(TimesHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
