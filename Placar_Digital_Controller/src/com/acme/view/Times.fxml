@@ -6,8 +6,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -75,12 +73,7 @@
                      </children>
                   </HBox>
                   <JFXListView fx:id="jfxlvJogadores" GridPane.rowIndex="2" />
-                  <TableView fx:id="jfxtcJogadoresEscalados" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                    <columns>
-                      <TableColumn prefWidth="233.0" styleClass="text-default-low" />
-                    </columns>
-                  </TableView>
-                  <JFXButton fx:id="jfxbtnDeleteJogador2" onAction="#handleDeleteJogadorAction" prefHeight="42.0" prefWidth="605.0" text="Deletar" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <JFXButton fx:id="jfxbtnDeleteJogadorEscakado" onAction="#handleDeleteJogadorEscaladoAction" prefHeight="42.0" prefWidth="605.0" text="Retirar" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <styleClass>
                         <String fx:value="btn-default" />
                         <String fx:value="times-button" />
@@ -91,7 +84,7 @@
                   </JFXButton>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
-                        <JFXComboBox fx:id="jfxcbSelecionarTime" focusColor="#e8175d" prefHeight="40.0" prefWidth="200.0" promptText="Selecionar Time" styleClass="text-default-low" unFocusColor="#32292f" />
+                        <JFXComboBox fx:id="jfxcbSelecionarTime" focusColor="#e8175d" onAction="#handleSelecionarTimeAction" prefHeight="40.0" prefWidth="200.0" promptText="Selecionar Time" styleClass="text-default-low" unFocusColor="#32292f" />
                         <JFXButton fx:id="jfxbtnAddTeam" onAction="#handlejfxbtnAddTeamAction" prefHeight="45.0" prefWidth="70.0" text="+">
                            <styleClass>
                               <String fx:value="btn-default" />
@@ -103,7 +96,7 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <JFXButton fx:id="jfxbtnAtt" onAction="#handleSelecionarTimeAction" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <JFXListView fx:id="jfxlvJogadoresEscalados" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
                <GridPane.margin>
                   <Insets left="40.0" right="40.0" />
