@@ -207,6 +207,12 @@ public class ADMStartController extends Observer implements Initializable {
         loadTeams();
         loadPlayers();
         JfxTfTempo.setText("05-00");
+        if (JfxCbTimeA.getItems().size() > 0) {
+            JfxCbTimeA.setValue(JfxCbTimeA.getItems().get(0));
+        }
+        if (JfxCbTimeB.getItems().size() > 0) {
+            JfxCbTimeB.setValue(JfxCbTimeB.getItems().get(1));
+        }
     }
 
     @FXML
