@@ -45,6 +45,12 @@ public class Utils {
                 Server.startGame(splitted[1], splitted[2], splitted[3], splitted[4]);
             } else if (splitted[0].equals(Acoes.PRORROGACAO.name())) {
                 Server.addProrrogacao(Integer.parseInt(splitted[1]));
+            } else if (splitted[0].equals(Acoes.ADD_PONTOS_A.name())) {
+                Server.addPontosA(Integer.parseInt(splitted[1]));
+            } else if (splitted[0].equals(Acoes.ADD_PONTOS_B.name())) {
+                Server.addPontosB(Integer.parseInt(splitted[1]));
+            } else if (splitted[0].equals(Acoes.IMAGEM.name())) {
+                Server.setImagem(splitted[1]);
             }
             System.out.println("OBJECTO" + obj);
         } else {

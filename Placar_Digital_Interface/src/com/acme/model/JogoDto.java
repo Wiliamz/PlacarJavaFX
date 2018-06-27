@@ -66,6 +66,10 @@ public class JogoDto implements Serializable {
         this.pontosA += 1;
     }
 
+    public void addPontosA(int qtd) {
+        this.pontosA += qtd;
+    }
+
     public int getPontosB() {
         return pontosB;
     }
@@ -76,6 +80,10 @@ public class JogoDto implements Serializable {
 
     public void addPontosB() {
         this.pontosB += 1;
+    }
+
+    public void addPontosB(int qtd) {
+        this.pontosB += qtd;
     }
 
     public void removePontosA() {

@@ -100,14 +100,28 @@ public final class Server {
     public static void addPontosA() {
         Server.jogo.addPontosA();
         for (ClientHandler c : Server.getClients()) {
-            c.sendMessage(Acoes.ADD_PONTOS_A.name() + ":" + Server.jogo.getPontosA());
+            c.sendMessage(Acoes.ADD_PONTOS_A.name() + ":" + 1);
+        }
+    }
+
+    public static void addPontosA(int qtd) {
+        Server.jogo.addPontosA(qtd);
+        for (ClientHandler c : Server.getClients()) {
+            c.sendMessage(Acoes.ADD_PONTOS_A.name() + ":" + qtd);
         }
     }
 
     public static void addPontosB() {
         Server.jogo.addPontosB();
         for (ClientHandler c : Server.getClients()) {
-            c.sendMessage(Acoes.ADD_PONTOS_B.name() + ":" + Server.jogo.getPontosB());
+            c.sendMessage(Acoes.ADD_PONTOS_B.name() + ":" + 1);
+        }
+    }
+
+    public static void addPontosB(int qtd) {
+        Server.jogo.addPontosB(qtd);
+        for (ClientHandler c : Server.getClients()) {
+            c.sendMessage(Acoes.ADD_PONTOS_B.name() + ":" + qtd);
         }
     }
 
@@ -144,6 +158,13 @@ public final class Server {
         Server.jogo.setTempoProrrogacacao(qtd);
         for (ClientHandler c : Server.getClients()) {
             c.sendMessage(Acoes.PRORROGACAO.name() + ":" + Server.jogo.getTempoProrrogacacao());
+        }
+    }
+
+    public static void setImagem(String base) {
+        Server.jogo.setBase64Image(base);
+        for (ClientHandler c : Server.getClients()) {
+            c.sendMessage(Acoes.IMAGEM.name() + ":" + base);
         }
     }
 

@@ -19,5 +19,6 @@ public enum Acoes {
     REMOVE_PONTOS_B,
     PRORROGACAO,
     INICIAR_JOGO,
+    IMAGEM,
     MENSAGEM
 }
